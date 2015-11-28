@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<h1>Всички събития</h1>
+  <tbody>
+  <%= link_to 'Добави ново събитие', new_event_path %>
+  </br>
+  </br>
+    <% @events.each do |event| %>
+      <table>
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
