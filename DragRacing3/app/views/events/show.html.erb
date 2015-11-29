@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p><strong>Title</strong>
+	<%=@event.title%>
+</p>
+<p>
+<strong>Description:</strong>
+	<%= @event.description %>
+<br>
+<strong>Adress</strong>
+	<%=@event.adress%>
+ <br>
+  <strong>Number of people whose going to an event:  </strong>
+  	<%=@event.users.size %>
+ <!--  <%=Event.first%>
+  <%=User.first.email%> -->
+</p>
+<%= button_to "Join", { :controller => "events", :action => "attend"} %>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

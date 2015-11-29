@@ -1,0 +1,8 @@
+<h1>New Event</h1>
+<%if user_signed_in? %>
+	<%= render 'form' %>
+<%else%>
+	 <strong><font color="red">You have to signed up!</font></strong> 
+<%end%>
+<br>
+<%= link_to 'Back', events_path %>
