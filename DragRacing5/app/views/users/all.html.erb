@@ -1,0 +1,10 @@
+<%@members.each do |m|%>
+<br>
+	<%if m==current_user.email%>
+		<%next%>
+	<%else%>
+		<%=m%>
+	<%end%>	
+<%end%>
+<br>
+<%=link_to "Back",events_path%>

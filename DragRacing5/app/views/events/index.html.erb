@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<h1>Всички събития</h1>
+  <tbody>
+  <%if user_signed_in?%>
+    <%= link_to 'Добави ново събитие', new_event_path %>
+   <%end%>  
+  </br>
+  </br>
+  <%if user_signed_in?%>
+     <%= button_to "All users", { :controller => "users", :action => "all"} %>
+  <%end%>  
+    <% @events.each do |event| %>
+      <table>
+        <thead>
+          <tr>
+            <th>Title:       <%=event.title%></th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      <tr>
+        <td> </td>
+
+        <td><%= link_to 'Show', event %></td>
+        <%if user_signed_in?%>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
