@@ -10,4 +10,10 @@ class UsersController < ApplicationController
 		@members<<mem.email	
 		end
 	end
+	def myevents
+		@myallevents=Array.new
+		current_user.events.each do |m|
+			@myallevents<<m
+		end		
+	end
 end

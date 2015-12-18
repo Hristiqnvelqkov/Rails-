@@ -1,0 +1,11 @@
+<%@event.comments.each do |text| %>
+	<br>
+	<%person=User.find(text.user_id)%>
+	<%=person.email%>
+	<br>
+	<%=text.newcomment%>
+	<%if (current_user.id==text.user_id)%>
+		<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit"}%>
+	<%end%>
+	<br>
+<%end%>

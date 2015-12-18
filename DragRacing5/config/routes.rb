@@ -2,12 +2,19 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :users
+   resources :events  do
+      resources :comments
+   end
     match '/attend/:id' => 'events#attend', via: :get
   match '/attend/:id' => 'events#attend', via: :post
    match '/cancel/:id' => 'events#cancel', via: :get
   match '/cancel/:id' => 'events#cancel', via: :post
     match '/all' => 'users#all', via: :get
     match '/all' => 'users#all', via: :post
+       match '/myevents' => 'users#myevents', via: :get
+    match '/myevents' => 'users#myevents', via: :post
+    match '/events/:id/comments/new' => 'comments#create', via: :post
+    # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "events#index"
   #get 'events'=>'events#events'
   #resources :events

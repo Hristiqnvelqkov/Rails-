@@ -22,5 +22,9 @@
 	 	<%= button_to "Join", { :controller => "events", :action => "attend"} %>
 	 <%end%>
 <%end%>
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<%if user_signed_in? %>
+	<%=link_to "Add comment",{ :controller => "comments", :action => "new", :event_id => @event.id}%>
+	<%= link_to 'Edit', edit_event_path(@event) %> |
+<%end%>
+<%=link_to "Comments",{:controller => "comments", :action =>"index" ,:event_id => @event.id} %>
 <%= link_to 'Back', events_path %>

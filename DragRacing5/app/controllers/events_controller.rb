@@ -1,14 +1,13 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy,:attend,:cancel]
   before_action :authenticate_user!, :except => [:show, :index]
+ # before_action :set_comment, only: [:mycomment]
   def attend
-     @event = Event.find(params[:id])
-     @event.users<<current_user
+    @event.users<<current_user
     flash[:notice]='You are joined successfully'
     redirect_to root_url
   end
   def cancel
-    @event=Event.find(params[:id])
     @event.users.delete(current_user)
     flash[:notice]="You are canceled for the event"
     redirect_to root_url
@@ -27,16 +26,18 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+  	if (current_user.id!=@event.user_id)
+  		render :text=>"dsisdids"
+  	end
   end
 
   def create
-     #before_action :authenticate_user!
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
       if @event.save
          redirect_to @event, notice: 'Event was successfully created.' 
       else
          render :new 
-      end
+      end  
   end
 
   def update
@@ -48,8 +49,12 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @event.destroy
-       redirect_to events_url, notice: 'Event was successfully destroyed.' 
+  	if (current_user.id==@event.user_id)
+    	@event.destroy
+       redirect_to events_url, notice: 'Event was successfully destroyed.'
+    else
+    	render :text=> "ko praish momche"
+    end    
   end
 
   private
@@ -57,7 +62,6 @@ class EventsController < ApplicationController
     def set_event
       @event = Event.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :description, :adress)
