@@ -1,7 +1,15 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy,:attend,:cancel]
+  before_action :set_event, only: [:show, :edit, :update, :destroy,:attend,:cancel,:like,:unlike]
   before_action :authenticate_user!, :except => [:show, :index]
  # before_action :set_comment, only: [:mycomment]
+  def like
+    @event.liked_by current_user
+    redirect_to root_url
+  end
+  def unlike
+    @event.unliked_by  current_user
+    redirect_to root_url
+  end 
   def attend
     @event.users<<current_user
     flash[:notice]='You are joined successfully'

@@ -14,6 +14,11 @@ Rails.application.routes.draw do
        match '/myevents' => 'users#myevents', via: :get
     match '/myevents' => 'users#myevents', via: :post
     match '/events/:id/comments/new' => 'comments#create', via: :post
+    match '/events/:id/comments/:id/edit' => 'comments#edit', via: :post
+    match '/events/:id/like' => 'events#like', via: :post
+     match '/events/:id/like' => 'events#like', via: :get
+         match '/events/:id/unlike' => 'events#unlike', via: :post
+     match '/events/:id/unlike' => 'events#unlike', via: :get
     # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "events#index"
   #get 'events'=>'events#events'

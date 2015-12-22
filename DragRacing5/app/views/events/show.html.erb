@@ -23,6 +23,12 @@
 	 <%end%>
 <%end%>
 <%if user_signed_in? %>
+	<%if ((current_user.voted_for? @event)==false) %>
+		<%=link_to "Like",{ :controller => "events", :action => "like",:id =>@event.id}%>
+	<%else%>
+		<%=link_to "Unlike",{ :controller => "events", :action => "unlike",:id =>@event.id}%>
+	<%end%>
+	<%=@event.get_positives.size%> 
 	<%=link_to "Add comment",{ :controller => "comments", :action => "new", :event_id => @event.id}%>
 	<%= link_to 'Edit', edit_event_path(@event) %> |
 <%end%>

@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+	  acts_as_votable
 	has_many :users
 	has_many :comments
 	 validates :title, :presence => true
