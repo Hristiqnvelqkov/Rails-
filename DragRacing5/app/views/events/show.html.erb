@@ -31,6 +31,7 @@
 	<%=@event.get_positives.size%> 
 	<%=link_to "Add comment",{ :controller => "comments", :action => "new", :event_id => @event.id}%>
 	<%= link_to 'Edit', edit_event_path(@event) %> |
+	<%=render_shareable :buttons=> ['twitter']%> 
 <%end%>
 <%=link_to "Comments",{:controller => "comments", :action =>"index" ,:event_id => @event.id} %>
 <%= link_to 'Back', events_path %>

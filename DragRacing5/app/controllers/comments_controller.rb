@@ -2,9 +2,18 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create]
    def index
    	 @event = Event.find(params[:event_id])
-  end
+   end
    def show
 
+   end
+   def destroy
+   	 @comment=Comment.find(params[:id])
+     if (current_user.id==@comment.user_id)
+       	@comment.destroy
+        redirect_to root_url, notice: 'Event was successfully destroyed.'
+     else
+    	render :text=> "ko praish momche"
+     end
    end
    def edit
    	 @comment=Comment.find(params[:id])
