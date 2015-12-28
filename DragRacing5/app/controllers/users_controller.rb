@@ -14,6 +14,6 @@ class UsersController < ApplicationController
 		@myallevents=Array.new
 		current_user.events.each do |m|
 			@myallevents<<m
-		end		
+		end			
 	end
 end

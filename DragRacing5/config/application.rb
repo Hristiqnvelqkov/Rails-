@@ -23,15 +23,5 @@ module DragRacing
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-  end
-  if Rails.env == 'development' || Rails.env == 'test'
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, 'DEV_APP_ID', 'DEV_APP_SECRET'
-  end
-else
-  # Production
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :facebook, 'PRODUCTION_APP_ID', 'PRODUCTION_APP_SECRET'
-  end
 end
 end

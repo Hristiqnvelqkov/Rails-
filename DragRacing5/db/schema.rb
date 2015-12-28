@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221095836) do
+ActiveRecord::Schema.define(version: 20151227211122) do
+
+  create_table "cars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "mark"
+    t.integer  "user_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -64,6 +71,7 @@ ActiveRecord::Schema.define(version: 20151221095836) do
     t.datetime "updated_at",                          null: false
     t.integer  "event_id"
     t.integer  "comment_id"
+    t.integer  "car_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

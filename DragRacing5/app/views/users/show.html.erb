@@ -2,3 +2,4 @@
 <%=link_to "My Events",{:controller=>"users",:action=>"myevents"}%>
 <%=link_to "Back",events_path%>
 <%= link_to "Edit profile", edit_user_registration_path %>
+<%= link_to "mycars" ,{:controller =>"cars", :action=>"create", :user_id =>current_user.id} %>
