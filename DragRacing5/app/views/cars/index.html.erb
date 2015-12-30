@@ -1,3 +1,13 @@
-<%=@cars%>
+<%current_user.cars.each do |c|%>
+	<br>
+	<strong>Mark: </strong>
+	<%=c.mark%>
+	<br>
+	<strong>Horsepower :</strong>
+	<%=c.horsepower%>
+	<br>
+	<%=link_to "Delete car",{:controller =>"cars", :action =>"destroy",:id=>c.id},:method => :delete%>
+	<br>
+<%end%>	
 <br>
 <%=link_to "Add car",{:controller=>"cars",:action=>"new"}%>

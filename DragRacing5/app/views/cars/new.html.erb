@@ -3,5 +3,13 @@
 	<br>
 	<%=f.text_area :mark%>
 	<br>
+	<%@years=Array.new%>
+	<%for i in 0..1500%>
+		<%@years<<i%>
+	<%end%> 
+	<%=f.label :horsepower%>
+	<br>
+	<%= f.select :horsepower, ((@years))%>
+	<br>
 	<%=f.submit%>
 <%end%>
