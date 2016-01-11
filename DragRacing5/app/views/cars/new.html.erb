@@ -8,8 +8,11 @@
 		<%@years<<i%>
 	<%end%> 
 	<%=f.label :horsepower%>
+	<%=f.label :wheeldrive%>
 	<br>
 	<%= f.select :horsepower, ((@years))%>
+	<%= f.select :wheeldrive, ['front', 'rear','all']%>
+	<br>
 	<br>
 	<%=f.submit%>
 <%end%>

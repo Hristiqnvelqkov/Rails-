@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151230081750) do
+ActiveRecord::Schema.define(version: 20160111080252) do
 
   create_table "cars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20151230081750) do
     t.string   "mark"
     t.integer  "user_id"
     t.integer  "horsepower"
+    t.string   "wheeldrive"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -27,6 +28,14 @@ ActiveRecord::Schema.define(version: 20151230081750) do
     t.string   "newcomment"
     t.integer  "user_id"
     t.integer  "event_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "car_id"
+    t.integer  "event_id"
+    t.integer  "user_id"
   end
 
   create_table "events", force: :cascade do |t|

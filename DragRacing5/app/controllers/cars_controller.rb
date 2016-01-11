@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+ before_action :authenticate_user!
 	def index
 		@cars=Car.all
 	end
@@ -24,6 +25,6 @@ class CarsController < ApplicationController
    		end
 	end
 	 def car_params
-    	params.require(:car).permit(:mark,:horsepower)
+    	params.require(:car).permit(:mark,:horsepower,:wheeldrive)
     end
 end

@@ -20,7 +20,7 @@
 		<%= button_to "Cancel", { :controller => "events", :action => "cancel"} %>
 	<%else%>
 	 	<%= button_to "Join", { :controller => "events", :action => "attend"} %>
-	 <%end%>
+	<%end%>
 <%end%>
 <%if user_signed_in? %>
 	<%if ((current_user.voted_for? @event)==false) %>
