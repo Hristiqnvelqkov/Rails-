@@ -1,0 +1,8 @@
+<%=form_for :enrollment do |f|%>
+	<%= f.select(:car_id) do %>
+		<% current_user.cars.each do |c| -%>
+    		<%= content_tag(:option, c.mark, value: c.id) %>
+  		<% end %>
+	<% end %>
+	<%=f.submit :save %>
+<%end%>

@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :events
   resources :users do 
     resources :cars
   end
    resources :events  do
       resources :comments
+      resources :enrollments 
    end
     match '/attend/:id' => 'events#attend', via: :get
-  match '/attend/:id' => 'events#attend', via: :post
-   match '/cancel/:id' => 'events#cancel', via: :get
+  # match '/attend/:id' => 'events#attend', via: :post
+  #  match '/cancel/:id' => 'events#cancel', via: :get
   match '/cancel/:id' => 'events#cancel', via: :post
     match '/all' => 'users#all', via: :get
     match '/all' => 'users#all', via: :post
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
          match '/events/:id/unlike' => 'events#unlike', via: :post
      match '/events/:id/unlike' => 'events#unlike', via: :get
     match '/users/:id/cars/new' => 'cars#create', via: :post
+    match '/events/:id/enrollments/new'=> 'enrollments#create', via: :post
     # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "events#index"
   #get 'events'=>'events#events'
