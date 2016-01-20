@@ -1,0 +1,6 @@
+<%if ((current_user.voted_for? @event)==false) %>
+	<%=link_to "Like",{ :controller => "events", :action => "like",:id =>@event.id, :remote => true}%>
+<%else%>
+	<%=link_to "Unlike",{ :controller => "events", :action => "unlike",:id =>@event.id}%>
+<%end%>
+<%=@event.get_positives.size%> 

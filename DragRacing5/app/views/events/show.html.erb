@@ -15,29 +15,24 @@
  <!--  <%=Event.first%>
   <%=User.first.email%> -->
 </p>
+<%@exist=0%>
 <%if user_signed_in?%>
 	<%@event.enrollments.each do |xa| %>	
 		<%if xa.user_id==current_user.id%>
-			<%@exists = true %>
-			<%break%>
+			<%@exist = 1 %>
 		<%end%>
-	<%end%>	
-	<%if @exist!=true %>	
+	<%end%>
+	<%if @exist==1 %>
 		<%= button_to "Cancel", { :controller => "enrollments", :action => "destroy", :event_id=>@event.id} %>
-	<%else%>
-		 <%= button_to "Join", { :controller => "enrollments", :action => "new",:event_id=>@event.id} %>
+	<%elsif @exist==0%>
+		<%= button_to "Join", { :controller => "enrollments", :action => "new",:event_id=>@event.id} %>	
 	<%end%>
 <%end%>
 <%if user_signed_in? %>
-	<%if ((current_user.voted_for? @event)==false) %>
-		<%=link_to "Like",{ :controller => "events", :action => "like",:id =>@event.id}%>
-	<%else%>
-		<%=link_to "Unlike",{ :controller => "events", :action => "unlike",:id =>@event.id}%>
-	<%end%>
-	<%=@event.get_positives.size%> 
+   <div class="likes"><%= render 'like' %></div>
 	<%=link_to "Add comment",{ :controller => "comments", :action => "new", :event_id => @event.id}%>
 	<%= link_to 'Edit', edit_event_path(@event) %> |
 	<%=render_shareable :buttons=> ['twitter']%> 
 <%end%>
-<%=link_to "Comments",{:controller => "comments", :action =>"index" ,:event_id => @event.id} %>
+	<%=link_to "Comments",{:controller => "comments", :action =>"index" ,:event_id => @event.id}%>
 <%= link_to 'Back', events_path %>

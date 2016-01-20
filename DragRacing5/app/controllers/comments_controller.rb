@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create]
    def index
    	 @event = Event.find(params[:event_id])
+     @comment=Comment.new
    end
    def show
 
@@ -24,7 +25,13 @@ class CommentsController < ApplicationController
   def create
   	@event=Event.find(params[:id])
   	@comment = current_user.comments.build(comment_params)
-  	@comment.save
+  	respond_to do |format|
+      if(@comment.save)
+        format.html {}
+        format.js   {}
+        format.json { render json: @comment, status: :created, location: @comment }
+      end  
+    end  
     @event.comments << current_user.comments.build(comment_params)
          redirect_to root_url
   end

@@ -4,7 +4,12 @@ class EventsController < ApplicationController
  # before_action :set_comment, only: [:mycomment]
   def like
     @event.liked_by current_user
-    redirect_to root_url
+    respond_to do |format|
+      format.html {redirect_to root_url}
+      format.js
+    end
+    #render :partial => "views/like"
+    #redirect_to root_url
   end
   def unlike
     @event.unliked_by  current_user
@@ -25,6 +30,7 @@ class EventsController < ApplicationController
   end
 
   def show
+    #@comment=Comment.new
   end
 
   # GET /events/new
@@ -72,6 +78,6 @@ class EventsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(@event).permit(:title, :description, :adress)
+      params.require(:event).permit(:title, :description, :adress)
     end
 end
