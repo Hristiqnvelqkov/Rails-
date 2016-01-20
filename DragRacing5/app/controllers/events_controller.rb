@@ -13,7 +13,10 @@ class EventsController < ApplicationController
   end
   def unlike
     @event.unliked_by  current_user
-    redirect_to root_url
+     respond_to do |format|
+      format.html {redirect_to root_url}
+      format.js
+    end  
   end 
   def attend
     @event.users<<current_user
