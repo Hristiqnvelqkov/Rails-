@@ -23,6 +23,7 @@ Rails.application.routes.draw do
      match '/events/:id/unlike' => 'events#unlike', via: :get
     match '/users/:id/cars/new' => 'cars#create', via: :post
     match '/events/:id/enrollments/new'=> 'enrollments#create', via: :post
+     match '/events/:id/enrollments/:id'=> 'enrollments#destroy', via: :delete
     # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "events#index"
   #get 'events'=>'events#events'

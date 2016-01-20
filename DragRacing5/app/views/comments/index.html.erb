@@ -6,7 +6,7 @@
 	<%=text.newcomment%>
 	<%if (current_user.id==text.user_id)%>
 		<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit",:id=>text.id}%>
-		<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id},:method => :delete%>
+		<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id,:remote => true},:method => :delete%>
 	<%end%>
 	<br>
 <%end%>

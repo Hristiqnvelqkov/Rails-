@@ -3,6 +3,9 @@ class EnrollmentsController < ApplicationController
 		@enrollment=Enrollment.new
 	end
 	def destroy
+		@enrollment=Enrollment.find(params[:enrollment_id])
+		@enrollment.delete
+		redirect_to root_url
 	end
 	def create
 		@event=Event.find(params[:id])

@@ -5,13 +5,15 @@ class CommentsController < ApplicationController
      @comment=Comment.new
    end
    def show
-
    end
    def destroy
    	 @comment=Comment.find(params[:id])
      if (current_user.id==@comment.user_id)
        	@comment.destroy
-        redirect_to root_url, notice: 'Event was successfully destroyed.'
+        respond_to do |format|
+         format.html {redirect_to root_url}
+         format.js
+        end  
      else
     	render :text=> "ko praish momche"
      end
@@ -20,8 +22,8 @@ class CommentsController < ApplicationController
    	 @comment=Comment.find(params[:id])
    end
    def new
-    @comment = Comment.new
-  end
+     @comment = Comment.new 
+   end
   def create
   	@event=Event.find(params[:id])
   	@comment = current_user.comments.build(comment_params)
@@ -29,11 +31,11 @@ class CommentsController < ApplicationController
       if(@comment.save)
         format.html {}
         format.js   {}
-        format.json { render json: @comment, status: :created, location: @comment }
+        #format.json { render json: @comment, status: :created, location: @comment }
       end  
     end  
     @event.comments << current_user.comments.build(comment_params)
-         redirect_to root_url
+         #redirect_to root_url
   end
    def comment_params
     	params.require(:comment).permit(:newcomment)
