@@ -1,9 +1,9 @@
 <%@members.each do |m|%>
 <br>
-	<%if m==current_user.email%>
+	<%if m.email==current_user.email%>
 		<%next%>
 	<%else%>
-		<%=m%>
+		<%=link_to m.email,m %>
 	<%end%>	
 <%end%>
 <br>
