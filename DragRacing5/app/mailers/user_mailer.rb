@@ -6,4 +6,9 @@ class UserMailer < ApplicationMailer
     	#@url  = 'http://localhost:3000/events/:id/enrollments/new'
     	mail(to: @user.email, subject: 'Welcome to My Awesome Site') 
   end
+  	def digest_email(user)
+    	@visitor = user
+    	#@url  = 'http://localhost:3000/events/:id/enrollments/new'
+    	mail(to: @visitor.email, subject: 'LUdaaak') 
+  	end	
 end
