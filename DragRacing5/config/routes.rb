@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   end
    resources :events  do
       resources :comments
+      resources :results
       resources :enrollments 
    end
     match '/attend/:id' => 'events#attend', via: :get

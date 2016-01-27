@@ -30,6 +30,12 @@
 	<%end%>
 <%end%>
 <%if user_signed_in? %>
+	<%if @event.user_id==current_user.id%>
+		<%if(Date.parse(@event.date.strftime('%Y-%m-%d %H:%M')) <= Date.today) %>
+			<%=link_to "Add result",{:controller => "results", :action => "create" , :event_id => @event.id} %>
+			<%=link_to "Results", {:controller=>"results", :action => "index" ,:event_id=>@event.id } %>
+		<%end%>	
+	<%end%>
    <div class="likes"><%= render 'like' %></div>
 	<%=link_to "Add comment",{ :controller => "comments", :action => "new", :event_id => @event.id}%>
 	<%= link_to 'Edit', edit_event_path(@event) %> |
