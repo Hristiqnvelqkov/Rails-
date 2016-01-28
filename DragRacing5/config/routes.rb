@@ -28,6 +28,7 @@ Rails.application.routes.draw do
      match '/users/:id/usercars' => 'users#usercars' , via: :get
      match '/users/:id/userevents' => 'users#userevents' , via: :get
     match '/events/:id/results/new'=> 'results#create', via: :post
+    match '/events/:id/statistics'=> 'results#statistics', via: :get
       #match '/users/:id/usercars' => 'users#usercars' , via: :get
     # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "events#index"

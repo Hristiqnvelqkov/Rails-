@@ -1,0 +1,9 @@
+<%@event.results.each do |ha| %>
+	<br>
+	<%user=User.find(ha.visitor_id)%>
+	<br>
+	<%=link_to user.email,user %>
+	<%=ha.user_result%>
+	<br>
+	<%=link_to "statistics",{:controller => "results", :action => "statistics", :id => @event.id}%>
+<%end%>
