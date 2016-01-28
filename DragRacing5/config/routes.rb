@@ -27,6 +27,7 @@ Rails.application.routes.draw do
      match '/events/:id/enrollments/:id'=> 'enrollments#destroy', via: :delete
      match '/users/:id/usercars' => 'users#usercars' , via: :get
      match '/users/:id/userevents' => 'users#userevents' , via: :get
+    match '/events/:id/results/new'=> 'results#create', via: :post
       #match '/users/:id/usercars' => 'users#usercars' , via: :get
     # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "events#index"

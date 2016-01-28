@@ -1,0 +1,30 @@
+<%=form_for :result do |f| %>
+	<%enrollments=Array.new%>
+	<%results=Array.new%>
+		<% @event.enrollments.each do |c| %>
+			<%if User.exists?(id: c.user_id) %>
+				<%enrollments<<c.user_id%>
+				<%test=User.find(c.user_id)%>
+				<%@event.results.each do |haha| %>
+					<%if c.user_id == haha.visitor_id%>
+						<%results<<haha.visitor_id%>
+    				<%end%>
+    			<%end%>		
+    		<%else%>
+    			<%next%>
+    		<%end%>		
+  		<% end %>
+	<%results=enrollments-results%>
+	<%= f.select(:visitor_id) do %>
+		<% results.each do |c| -%>
+			<%test=User.find(c)%>
+    		<%= content_tag(:option, test.email, value: test.id) %>
+    	<%end%>	
+  	<% end %>
+	<br>
+	<%=f.label :Time%>
+	<br>
+	<%=f.text_area :user_result,:size => "15x1",:default => ""%>
+	<br>
+	<%=f.submit :save %>
+<%end%>

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :comments
   has_many :cars
+  has_many :results
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
