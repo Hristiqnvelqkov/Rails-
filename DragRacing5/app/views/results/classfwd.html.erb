@@ -1,12 +1,12 @@
 <br>
-<strong>All visitors</strong>
+<strong>Class FWD</strong>
 <%test=Hash.new%>
-<%test=@statis.sort_by {|k, v| v }%>
+<%test=@fwd.sort_by {|k, v| v }%>
 <%position=0%>
 <%rescars=Hash.new%>
 
 <%test.each do |key,value|%>
-	<%@cars.each  do |key1,value1| %>
+	<%@fwdcars.each  do |key1,value1| %>
 		<%if key==key1%>
 			<%rescars[key1]=Array.new%>
 			<%rescars[key1]<<value%>
@@ -30,7 +30,6 @@
 			<%=key%>
 			<%=value%>
 			<%=mycar.mark%>
-			<%=mycar.wheeldrive%>
 			<%break%>
 		<%end%>
 	<%end%>	
