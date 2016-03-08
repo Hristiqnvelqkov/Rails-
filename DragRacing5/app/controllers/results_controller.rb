@@ -24,12 +24,14 @@ class ResultsController < ApplicationController
 		end	
 		@event.enrollments.each do |enr|
 			if (User.exists?(id: enr.user_id))
-				car=Car.find(enr.car_id)
-				user_id=car.user_id
-				user=User.find(user_id)
-				user=user.email
-				car=car.id
-				@cars[user]=car
+				if (Car.exists?(id: enr.car_id))
+					car=Car.find(enr.car_id)
+					user_id=car.user_id
+					user=User.find(user_id)
+					user=user.email
+					car=car.id
+					@cars[user]=car
+				end
 			end	
 		end
 
@@ -56,13 +58,15 @@ class ResultsController < ApplicationController
 		end	
 		@event.enrollments.each do |enr|
 			if (User.exists?(id: enr.user_id))
-				car=Car.find(enr.car_id)
-				if(car.wheeldrive=="front")
-					user_id=car.user_id
-					user=User.find(user_id)
-					user=user.email
-					car=car.id
-					@fwdcars[user]=car
+				if (Car.exists?(id: enr.car_id))
+					car=Car.find(enr.car_id)
+					if(car.wheeldrive=="front")
+						user_id=car.user_id
+						user=User.find(user_id)
+						user=user.email
+						car=car.id
+						@fwdcars[user]=car
+					end
 				end	
 			end
 		end	
@@ -78,13 +82,15 @@ class ResultsController < ApplicationController
 		end	
 		@event.enrollments.each do |enr|
 			if (User.exists?(id: enr.user_id))
-				car=Car.find(enr.car_id)
-				if(car.wheeldrive=="rear")
-					user_id=car.user_id
-					user=User.find(user_id)
-					user=user.email
-					car=car.id
-					@rwdcars[user]=car
+				if (Car.exists?(id: enr.car_id))
+					car=Car.find(enr.car_id)
+					if(car.wheeldrive=="rear")
+						user_id=car.user_id
+						user=User.find(user_id)
+						user=user.email
+						car=car.id
+						@rwdcars[user]=car
+					end
 				end	
 			end
 		end	
@@ -100,13 +106,15 @@ class ResultsController < ApplicationController
 		end	
 		@event.enrollments.each do |enr|
 			if (User.exists?(id: enr.user_id))
-				car=Car.find(enr.car_id)
-				if(car.wheeldrive=="all")
-					user_id=car.user_id
-					user=User.find(user_id)
-					user=user.email
-					car=car.id
-					@awdcars[user]=car
+				if (Car.exists?(id: enr.car_id))
+					car=Car.find(enr.car_id)
+					if(car.wheeldrive=="all")
+						user_id=car.user_id
+						user=User.find(user_id)
+						user=user.email
+						car=car.id
+						@awdcars[user]=car
+					end
 				end	
 			end
 		end	

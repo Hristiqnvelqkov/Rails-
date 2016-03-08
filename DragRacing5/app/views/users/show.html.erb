@@ -1,5 +1,37 @@
-<br>
-<%=link_to "My Events",{:controller=>"users",:action=>"myevents"}%>
-<%=link_to "Back",events_path%>
-<%= link_to "Edit profile", edit_user_registration_path %>
-<%= link_to "mycars" ,{:controller =>"cars", :action=>"create", :user_id =>current_user.id} %>
+<%=render "events/navbar"%>
+<center><div class="userimage">
+<%if (current_user.avatar_content_type==nil)%>
+	 <%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+<%else%>
+  <%= image_tag current_user.avatar.url(:medium),class: "profilepic" %>
+</div>
+<%end%>
+</center>
+<nav class="navbar navbar-default" style="margin-top:3%;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <li class="navbar-brand"><big><%=current_user.email%></big></li>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+          <li><%=link_to "My Events",{:controller=>"users",:action=>"myevents"}%></li>
+        	<li><%= link_to "Edit profile", edit_user_registration_path%></li>
+           <li><%= link_to "mycars" ,{:controller =>"cars", :action=>"index", :user_id =>current_user.id}%></li>
+           <li><%= link_to "mygallery" ,{:controller =>"users", :action=>"mygallery"}%></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+</nav>
+<%=link_to "Back",events_path,class: 'btn btn-default'%>

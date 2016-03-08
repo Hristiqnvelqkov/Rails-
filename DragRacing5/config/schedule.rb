@@ -12,14 +12,13 @@
 #   runner "MyModel.some_method"
 #   rake "some:great:rake:task"
 # end
-#set :output, "/log/whenever.log"
+set :output, "#{path}/log/cron.log"
+env :PATH, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin'
 set :environment, "development"
-every :day, at: '10pm' do
-	#puts "ti si gei"
+every 10.hours do
   runner "Event.send_digest_email"
    #command 'RAILS_ENV=production bundle exec rake -T'
 end
-
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end

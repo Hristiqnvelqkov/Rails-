@@ -1,6 +1,12 @@
 <%if ((current_user.voted_for? @event)==false) %>
-	<%=link_to "Like",{ :controller => "events", :action => "like",:id =>@event.id, :remote => true}%>
+<%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-up\"></i>"), 
+          { :controller => "events", :action => "like",:id =>@event.id, :remote => true}, 
+          class: "btn btn-primary"
+          %>
 <%else%>
-	<%=link_to "Unlike",{ :controller => "events", :action => "unlike",:id =>@event.id, :remote => true}%>
+	<%= link_to raw("<i class=\"glyphicon glyphicon-thumbs-down\"></i>"), 
+          { :controller => "events", :action => "unlike",:id =>@event.id, :remote => true}, 
+          class: "btn btn-danger"
+          %>
 <%end%>
 <%=@event.get_positives.size%> 

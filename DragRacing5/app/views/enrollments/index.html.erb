@@ -1,0 +1,24 @@
+<div class="panel panel-default" style="width: 65%;">
+   <div class="panel-heading">Enrollments</div>
+  		<table class="table">
+    		<td><strong>Name</strong></td>
+    		<td><strong>Car</strong></td>
+			<%@enrollments.each do |haha|%>
+				<%if User.exists?(id: haha.user_id) %>
+					<%user=User.find(haha.user_id)%>
+					<%if (Car.exists?(id: haha.car_id))%>
+					<%car=Car.find(haha.car_id)%>
+					<tr>
+					<td><%=user.email%></td>
+					<td><%=car.mark%></td>
+						</tr>
+					<%end%>
+				<%end%>
+			<%end%>	
+		</table>
+	</div>	
+	<ul class="pager">
+    	<li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft') %>
+  		</li><span aria-hidden="true"></span> </a></li>
+	</ul>
+</div>

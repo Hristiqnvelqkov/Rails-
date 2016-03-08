@@ -1,12 +1,18 @@
 <%@event.comments.each do |text| %>
 	<br>
-	<%person=User.find(text.user_id)%>
-	<%=person.email%>
-	<br>
-	<%=text.newcomment%>
-	<%if (current_user.id==text.user_id)%>
-		<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit",:id=>text.id}%>
-		<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id,:remote => true},:method => :delete%>
+	<%if (User.exists?(id: text.user_id))%>
+		<%person=User.find(text.user_id)%>
+		<%=link_to person.email,person%>
+		<br>
+		<%=text.newcomment%>
+		<%if (current_user.id==text.user_id)%>
+			<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit",:id=>text.id}%>
+			<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id,:remote => true},:method => :delete%>
+		<%end%>
 	<%end%>
 	<br>
 <%end%>
+<ul class="pager">
+    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

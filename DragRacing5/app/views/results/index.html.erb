@@ -1,11 +1,23 @@
-<%@event.results.each do |ha| %>
-	<br>
-	<%user=User.find(ha.visitor_id)%>
-	<%=link_to user.email,user %>
-	<%=ha.user_result%>
-<%end%>
+<div class="panel panel-default" style="width: 60%;">
+    <div class="panel-heading">Panel heading</div>
+  	<table class="table"%>
+  		<td>Email</td>
+    	<td><strong>Time</strong></td>
+		<%@event.results.each do |ha| %>
+			<%user=User.find(ha.visitor_id)%>
+					<tr>
+					<td><%=link_to user.email,user %></td>
+					<td><%=ha.user_result%></td>
+						</tr>
+		<%end%>
+	</table>
+</div>
 <br>
-<%=link_to "statistics",{:controller => "results", :action => "statistics", :id => @event.id}%>
-<%=link_to "fwdstatiscs",{:controller => "results", :action => "classfwd", :id => @event.id}%>
-<%=link_to "rwdstatiscs",{:controller => "results", :action => "classrwd", :id => @event.id}%>
-<%=link_to "awdstatiscs",{:controller => "results", :action => "classawd", :id => @event.id}%>
+<ul class="pager">
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Statistics" , href:"animate.min.css"),{:controller => "results", :action => "statistics", :id => @event.id}, class: 'animated bounceInLeft') %></li>
+	    <li class="previous"> <%= link_to(content_tag(:rel, "fwdstatiscs" , href:"animate.min.css"),{:controller => "results", :action => "classfwd", :id => @event.id}, class: 'animated bounceInLeft') %></li>
+	      <li class="previous"> <%= link_to(content_tag(:rel, "rwdtatistics" , href:"animate.min.css"),{:controller => "results", :action => "classrwd", :id => @event.id}, class: 'animated bounceInLeft') %></li>
+	        <li class="previous"> <%= link_to(content_tag(:rel, "awdstatiscs" , href:"animate.min.css"),{:controller => "results", :action => "classawd", :id => @event.id}, class: 'animated bounceInRight') %></li>
+	        <li class="previous"> <%=link_to "Back",@event,class: 'animated bounceInRight'%></li><span aria-hidden="true"></span> </a></li>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

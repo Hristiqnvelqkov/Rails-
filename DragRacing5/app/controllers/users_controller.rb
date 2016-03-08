@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
+	def mygallery
+		@pictures=Array.new	
+		current_user.cars.each do |haha|
+			@pictures<<haha.avatar
+		end
+	end
 	def userpage
 		@user=User.find(params[:id])
 	end	
@@ -8,8 +14,10 @@ class UsersController < ApplicationController
 		if(@user.id!=current_user.id)
 			render :userpage
 		end
+		@mypro="myprofile"
 	end	
 	def all
+		@mem="userspage"
 		@members=Array.new
 		@members=User.all
 		#member.each do |mem|
@@ -17,10 +25,12 @@ class UsersController < ApplicationController
 		#end
 	end
 	def myevents
+		@myev="myevents"
 		@myallevents=Array.new
 		current_user.events.each do |m|
 			@myallevents<<m
-		end			
+		end
+
 	end
 	def userevents
 		@user=User.find(params[:id])

@@ -1,16 +1,30 @@
-<h2>Log in</h2>
-
+<%=render "newnavbar"%>
+<br>
+<br>
+<span class='animated zoomInDown'>
+<h3>Log<span class="label label-primary">In</span></h3>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+	<div class="panel panel-primary" style="height:365px;width:500px" >
+	 <div class="panel-heading">Panel heading without title</div>
+	 <div class="panel-body">
+  	<div class="Info">
+  		<div class="field">
+    		<%= f.label :email %><br />
+    		<div class="input-group">
+  				<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+   				<%= f.email_field :email, autofocus: true,class: "input-group form-control" ,:placeholder => "Email"%>
+			</div>
+		</div>
+  	</div>
+  <div class="Info">
+  		<div class="field">
+    			<%= f.label :password %><br />
+    			<div class="input-group">
+      			<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+  				  <%= f.password_field :password, autocomplete: "off",class: "input-group form-control",:placeholder => "Password" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
   </div>
-
+  </div>
   <% if devise_mapping.rememberable? -%>
     <div class="field">
       <%= f.check_box :remember_me %>
@@ -19,8 +33,11 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in",class: "btn btn-primary" %>
   </div>
 <% end %>
-
+<hr>
 <%= render "devise/shared/links" %>
+</div>
+</div>
+</span>

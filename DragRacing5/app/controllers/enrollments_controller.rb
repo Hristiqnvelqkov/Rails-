@@ -7,6 +7,13 @@ class EnrollmentsController < ApplicationController
 		@enrollment.delete
 		redirect_to root_url
 	end
+	def index
+		@event = Event.find(params[:event_id])
+		@enrollments=Array.new
+		@event.enrollments.each do |haha|
+			@enrollments<<haha
+		end
+	end
 	def create
 		@event=Event.find(params[:id])
 		@enrollment = current_user.enrollments.build(enrollment_params)

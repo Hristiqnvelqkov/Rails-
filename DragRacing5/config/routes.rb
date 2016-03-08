@@ -17,7 +17,7 @@ Rails.application.routes.draw do
        match '/myevents' => 'users#myevents', via: :get
     match '/myevents' => 'users#myevents', via: :post
     match '/events/:id/comments/new' => 'comments#create', via: :post
-    match '/events/:id/comments/:id/edit' => 'comments#edit', via: :post
+    match '/events/:id/comments/:id/edit' => 'comments#edit', via: :put
     match '/events/:id/like' => 'events#like', via: :post
      match '/events/:id/like' => 'events#like', via: :get
          match '/events/:id/unlike' => 'events#unlike', via: :post
@@ -32,9 +32,11 @@ Rails.application.routes.draw do
      match '/events/:id/classfwd'=> 'results#classfwd', via: :get
       match '/events/:id/classrwd'=> 'results#classrwd', via: :get
        match '/events/:id/classawd'=> 'results#classawd', via: :get
+       match '/events/:id/enrollments'=> 'enrollments#index', via: :get
+       match 'users/:id/mygallery' => 'users#mygallery', via: :get
       #match '/users/:id/usercars' => 'users#usercars' , via: :get
     # match '/events/:id/comments/show' => 'comments#show', via: :get
-  root "events#index"
+  root "welcome#Welcome"
   #get 'events'=>'events#events'
   #resources :events
   # The priority is based upon order of creation: first created -> highest priority.

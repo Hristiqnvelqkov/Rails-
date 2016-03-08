@@ -1,12 +1,26 @@
-<%@user.cars.each do |c|%>
-	<br>
-	<strong>Mark: </strong>
-	<%=c.mark%>
-	<br>
-	<strong>Horsepower :</strong>
-	<%=c.horsepower%>
-	<br>
-	<strong>Wheeldrive :</strong>
-	<%=c.wheeldrive%>
-	<br>
-<%end%>	
+<table class="mycars">
+	<%@user.cars.each do |c|%>
+		<br>
+		<tr>
+			<td>
+				<%= image_tag c.avatar.url(:medium) %>
+			</td>
+			<td>	
+				<strong>Mark: </strong>
+				<%=c.mark%>
+			</td>
+			<td>
+			<strong>Horsepower :</strong>
+			<%=c.horsepower%>
+			</td>
+			<td>
+			<strong>Wheeldrive :</strong>
+			<%=c.wheeldrive%>
+			</td>
+		</tr>
+	<%end%>	
+</table>
+<ul class="pager">
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),current_user, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

@@ -27,15 +27,13 @@ class CommentsController < ApplicationController
   def create
   	@event=Event.find(params[:id])
   	@comment = current_user.comments.build(comment_params)
-  	respond_to do |format|
-      if(@comment.save)
-        format.html {}
-        format.js   {}
-        #format.json { render json: @comment, status: :created, location: @comment }
-      end  
-    end  
     @event.comments << current_user.comments.build(comment_params)
-         #redirect_to root_url
+    redirect_to root_url
+     if @comment.save
+        redirect_to :action => :index
+    else
+      render :text => "assa"
+    end
   end
    def comment_params
     	params.require(:comment).permit(:newcomment)

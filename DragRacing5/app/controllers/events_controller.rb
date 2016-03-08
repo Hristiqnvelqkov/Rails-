@@ -30,9 +30,23 @@ class EventsController < ApplicationController
   end  
   def index
     @events = Event.all
+    @onindex = "indexpage"
+    respond_to do |format|
+      format.js
+      format.html {}
+     end 
   end
-
+  def search
+    render :text => "ASsa"
+   @events = Event.search(params[:search])
+  end
   def show
+    @onshow = "onshow"
+    @hash = Gmaps4rails.build_markers(@event) do |event, marker|
+      puts event.latitude
+       puts marker.lat event.latitude
+      marker.lng event.longitude
+    end
     #@comment=Comment.new
   end
 
@@ -81,6 +95,6 @@ class EventsController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :adress,:date)
+      params.require(:event).permit(:title, :description, :adress,:date,:avatar,:video)
     end
 end

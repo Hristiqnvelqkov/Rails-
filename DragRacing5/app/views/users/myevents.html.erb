@@ -1,12 +1,27 @@
-<%@myallevents.each do |t|%>
-	<br>
-	<strong>Description: </strong>
-	<%=t.description%>
-	<br>
-	<strong>Title: </strong>
-	<%=t.title%>
-	<br>
-	<strong>Adress: </strong>
-	<%=t.adress%>
-	<br>
-<%end%>
+<%=render "events/navbar"%>
+<br>
+<br>
+<h3><b>My events</b><span class="label label-success">Show</span></h3>
+<table class="table_event">
+<div id="myevents">
+    <% @myallevents.each do |event| %>
+      <div class="row">
+  <div class="col-sm-6 col-md-4" style="width :20%;">
+    <div class="thumbnail">
+    <%if event.avatar_file_name==nil%>
+      <%=image_tag("no-photo.png")%>
+     <%else%> <%=image_tag event.avatar(:medium)%>
+     <%end%>
+      <div class="caption">
+         <h2><%=event.title%></h2>
+          <%=link_to "Learn More",{:controller => "events", :action => "show", :id => event.id}, class: 'btn btn-primary'%>
+      </div>
+    </div>
+  </div>
+</div>
+ <% end %>
+</div>
+<ul class="pager">
+    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),current_user, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

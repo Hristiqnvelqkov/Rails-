@@ -1,10 +1,49 @@
-<%@members.each do |m|%>
+<%=render "events/navbar"%>
+<h3>Users<span class="label label-primary">All</span></h3>
+<table class="userstable">
 <br>
+<%table=0%>
+<%@members.each do |m|%>
 	<%if m.email==current_user.email%>
 		<%next%>
 	<%else%>
-		<%=link_to m.email,m %>
-	<%end%>	
-<%end%>
-<br>
-<%=link_to "Back",events_path%>
+	 	<%if table > 3%>
+			<tr>
+				 <td>
+				 	<%if (m.avatar_content_type==nil)%>
+				 		<%= link_to m do %>
+	 						<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+						<%end%>
+					<%else%>
+						<%= link_to m do %>
+  							<%=image_tag m.avatar.url(:thumb),class: "profilepic" %>
+  						<%end%>
+					<%end%>
+				 	<%=link_to m.email,m%>
+				</td>
+			</tr>
+			<%table=0%>
+			<%next%>
+		<%else%>
+			<td>
+				<%if (m.avatar_content_type==nil)%>
+					<%= link_to m do %>	
+	 					<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+	 				<%end%>
+				<%else%>
+  					<%= link_to m do %>
+  						<%=image_tag m.avatar.url(:thumb),class: "profilepic" %>
+  					<%end%>
+				<%end%>
+				<%=link_to m.email,m%>
+				<br>
+			</td>
+			<%table+=1%>
+		<%end%>
+	<%end%>
+<%end%>		
+</table>
+<ul class="pager">
+   <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),events_path, class: 'animated slideInDown') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

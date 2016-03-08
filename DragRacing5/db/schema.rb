@@ -11,15 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129092805) do
+ActiveRecord::Schema.define(version: 20160222153846) do
 
   create_table "cars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "mark"
     t.integer  "user_id"
     t.integer  "horsepower"
     t.string   "wheeldrive"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -38,16 +42,8 @@ ActiveRecord::Schema.define(version: 20160129092805) do
     t.integer  "user_id"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "title"
-    t.string   "adress"
-    t.integer  "user_id"
-    t.integer  "comment_id"
-    t.datetime "date"
-  end
+# Could not dump table "events" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "results", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -76,6 +72,10 @@ ActiveRecord::Schema.define(version: 20160129092805) do
     t.integer  "event_id"
     t.integer  "comment_id"
     t.integer  "car_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

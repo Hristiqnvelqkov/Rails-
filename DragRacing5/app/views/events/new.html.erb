@@ -1,4 +1,8 @@
-<h1>New Event</h1>
-	<%= render 'form' %>
+<%=render "navbar"%>
+<h3>Event <span class="label label-warning">New</span></h3>
 <br>
-<%= link_to 'Back', events_path %>
+	<%= render 'form' %>
+<ul class="pager">
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:action => "index", :event_id =>@event.id}, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

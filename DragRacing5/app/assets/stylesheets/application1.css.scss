@@ -1,0 +1,95 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.list-group{
+	.list-group-item-danger{
+	   line-width: 18px;	
+	}
+}
+.description{
+ .form-control{
+		width: 500px;
+		height: 200px;
+}
+}
+.Info{
+ .form-control{
+		width: 200px;
+		height: 40px;
+}
+}
+.indexpage{
+	background-image: image-url('background.jpg');
+	background-size: cover;
+}
+ .navbar-brand{
+	font-family: 'Amatic SC'
+}
+.active{
+	font-family: "Architects Daughter"
+}
+.mybuttons{
+	font-family: "Architects Daughter"
+}
+.title{
+	font-family: "Playball"
+}
+.newevent{
+	font-family: "Passion One";
+	color: white;
+}
+.userimage{
+	margin-top: 10%;
+}
+.newcomment{ 
+ .form-control{
+		width: 250px;
+		height: 60px;
+	}
+}
+.eventsbuttons {
+  border-collapse: separate;
+  border-spacing: 15px 0;
+}
+.eventsbuttons{
+	td {
+	  padding: 10px 0;
+	}
+}
+.profilepic{
+	border-radius: 50%;
+}
+.userstable{
+	td {
+	  padding: 0px 50px;
+	}
+}
+.mycarspage{
+	background-image: image-url('Classic-Car-BMW-Wallpaper.jpg');
+	background-size: cover;
+}
+.mycars{
+	td {
+	  padding: 0px 50px;
+	}
+}
+.mycarpage{
+	width: 400px;
+		height: 400px;
+		margin-left: 30%;
+		margin-top: 10%;
+}
+

@@ -16,6 +16,17 @@ GIT
       less-rails (>= 2.5.0)
       railties (>= 3.1)
 
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: 37589f9b0c869c8df5be1ee4d83e14fb353a7dff
+  specs:
+    paperclip (4.3.1)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (~> 0.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -55,13 +66,25 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     acts_as_votable (0.10.0)
+    animate-rails (1.0.9)
+      rails
     arel (6.0.3)
+    autoprefixer-rails (6.3.1)
+      execjs
+      json
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.6)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (8.2.1)
     chronic (0.10.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -83,8 +106,12 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.6.0)
+    geocoder (1.3.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
+    google-webfonts-rails (0.0.4)
+      activesupport (> 3.2.0, < 5.0)
     i18n (0.7.0)
     jbuilder (2.4.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -106,6 +133,7 @@ GEM
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.99)
+    mimemagic (0.3.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
@@ -113,9 +141,13 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    paperclip-ffmpeg (1.2.0)
+      paperclip (>= 2.5.2)
+      rails
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.4.2)
     rails (4.2.1)
       actionmailer (= 4.2.1)
       actionpack (= 4.2.1)
@@ -181,6 +213,7 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    underscore-rails (1.8.3)
     warden (1.2.4)
       rack (>= 1.0)
     web-console (2.2.1)
@@ -196,12 +229,23 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
+  animate-rails
+  autoprefixer-rails
+  bootstrap-sass
+  bundler
   byebug
+  cocaine
   coffee-rails (~> 4.1.0)
   devise
+  geocoder
+  gmaps4rails
+  google-webfonts-rails
   jbuilder (~> 2.0)
   jquery-rails
   nested_scaffold
+  paperclip!
+  paperclip-ffmpeg
+  railroady
   rails (= 4.2.1)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
@@ -213,6 +257,7 @@ DEPENDENCIES
   turbolinks
   twitter-bootstrap-rails!
   uglifier (>= 1.3.0)
+  underscore-rails
   web-console (~> 2.0)
   whenever
 

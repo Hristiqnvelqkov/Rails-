@@ -1,5 +1,4 @@
-<br>
-<strong>Class AWD</strong>
+<h3>Class<span class="label label-primary">AWD</span></h3>
 <%test=Hash.new%>
 <%test=@awd.sort_by {|k, v| v }%>
 <%position=0%>
@@ -20,17 +19,31 @@
 	<%@mycars<<haha.last%>
 <%end%>
 <%i=0%>
-<%test.each do |key,value|%>
-	<%user=User.find_by_email(key)%> 
-	<%@mycars.each do |car| %>
-		<%mycar=Car.find_by(id: car)%>
-		<%if mycar.user==user%>
-			<br>
-			<strong><%=position+=1%></strong>
-			<%=key%>
-			<%=value%>
-			<%=mycar.mark%>
-			<%break%>
+<div class="panel panel-default" style="width: 75%;">
+    <div class="panel-heading">Panel heading</div>
+  	<table class="table">
+  		<td>#</td>
+    	<td><strong>Name</strong></td>
+    	<td><strong>Time</strong></td>
+    	<td><strong>Car</strong></td>
+		<%test.each do |key,value|%>
+			<%user=User.find_by_email(key)%> 
+			<%@mycars.each do |car| %>
+				<%mycar=Car.find_by(id: car)%>
+				<%if mycar.user==user%>
+					<tr>
+					<td><strong><%=position+=1%></strong></td>
+					<td><%=key%></td>
+					<td><%=value%></td>
+					<td><%=mycar.mark%></td>
+						</tr>
+					<%break%>
+				<%end%>
+			<%end%>	
 		<%end%>
-	<%end%>	
-<%end%>
+	</table>
+</div>
+<ul class="pager">
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:action => "index", :event_id =>@event.id}, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

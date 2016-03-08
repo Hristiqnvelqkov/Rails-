@@ -1,0 +1,29 @@
+<%=render "events/navbar"%>
+<%table=0%>
+<table class="table_pictures">
+	<%if @pictures.empty?%>
+	 	<%=image_tag('no-thumb.jpg', size: "400x400",style: "margin-top:10%;margin-left:30%;")%>
+	<%else%>	
+		<%@pictures.each do |haha|%> 
+			<%if table > 1%>
+				<tr>
+		 			<td>	
+						<%= image_tag haha.url(:medium) , :size => "300x300" %>
+					</td>
+				</tr>
+				<%table=0%>
+				<%next%>
+			<%else%>
+				<td>
+					<%= image_tag haha.url(:medium) , :size => "300x300" %>
+				<br>
+				</td>
+				<%table+=1%>
+			<%end%>
+		<%end%>
+	<%end%>
+</table>	
+<ul class="pager">
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),current_user, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>
