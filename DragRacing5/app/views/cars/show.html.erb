@@ -1,1 +1,27 @@
+<table class="carparams">
+<td width="50%;">
+<big><big>Mark:</big></big>
+<big><%=@car.mark%></big>
+<hr>
+<big><big>Horse Power:</big></big>
+<big><%=@car.horsepower%></big>
+<hr>
+<big><big>Wheeldrive:</big></big>
+<big><%=@car.wheeldrive%></big>
+<hr>
+<big><big>Transmission:</big></big>
+<big><%=@car.transmission%></big>
+<hr>
+<big><big>Coupe:</big></big>
+<big><%=@car.coupe%></big>
+<hr>
+<big><big>Engine:</big></big>
+<big><%=@car.enginetype%></big>
+<hr>
+</td>
+<td>
 <%= image_tag @car.avatar.url(:medium) ,class: "mycarpage"%>
+</td>
+</table>
+<ul class="pager"> <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:controller => "cars", :action =>"index" }, class: ' animated slideInDown') %></li></td>
+	</ul>

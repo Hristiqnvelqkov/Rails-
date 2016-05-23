@@ -1,8 +1,15 @@
-<%=form_for :enrollment do |f|%>
-	<%= f.select(:car_id) do %>
-		<% current_user.cars.each do |c| -%>
-    		<%= content_tag(:option, c.mark, value: c.id) %>
-  		<% end %>
-	<% end %>
-	<%=f.submit :save %>
-<%end%>
+<center><div class="panel panel-primary" style="width: 30%;margin-top: 10%;">
+	  <div class="panel-heading">Panel heading without title</div>
+	  <div class="panel-body">
+	    <%=form_for ([@event, @enrollment]) do |f|%>
+			<%= f.select(:car_id) do %>
+				<% current_user.cars.each do |c| -%>
+		    		<%= content_tag(:option, c.mark, value: c.id) %>
+		  		<% end %>
+			<% end %>
+			<br>
+			<%=f.submit :save,class: 'btn btn-primary',:style => "margin-top:10%;" %>
+	   	<%end%>
+	  </div>
+	</div>
+</center>

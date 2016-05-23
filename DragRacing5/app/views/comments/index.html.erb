@@ -2,17 +2,31 @@
 	<br>
 	<%if (User.exists?(id: text.user_id))%>
 		<%person=User.find(text.user_id)%>
-		<%=link_to person.email,person%>
+		<%if (person.avatar_content_type==nil)%>
+				 		<%= link_to person do %>
+	 						<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+						<%end%>
+					<%else%>
+						<%= link_to person do %>
+  							<%=image_tag person.avatar.url(:thumb),class: "profilepic" %>
+  						<%end%>
+					<%end%>
+				 	<%=link_to person.email,person%>
 		<br>
 		<%=text.newcomment%>
+		<br>
 		<%if (current_user.id==text.user_id)%>
+			<div class="hvr-float">
 			<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit",:id=>text.id}%>
 			<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id,:remote => true},:method => :delete%>
+			</div>
 		<%end%>
 	<%end%>
 	<br>
 <%end%>
-<ul class="pager">
-    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft') %>
-	</li><span aria-hidden="true"></span> </a></li>
-</ul>
+<div class="hvr-grow-rotate">
+	<ul class="pager">
+    	<li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft') %>
+		</li><span aria-hidden="true"></span> </a></li>
+	</ul>
+</div>

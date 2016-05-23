@@ -1,4 +1,6 @@
-<h1>New Enrollment</h1>
 	<%= render 'form3' %>
 <br>
-<%= link_to 'Back', events_path %>
+<ul class="pager">
+    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),events_path, class: 'animated zoomInDown') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

@@ -20,12 +20,10 @@ class EventsController < ApplicationController
   end 
   def attend
     @event.users<<current_user
-    flash[:notice]='You are joined successfully'
     redirect_to root_url
   end
   def cancel
     @event.users.delete(current_user)
-    flash[:notice]="You are canceled for the event"
     redirect_to root_url
   end  
   def index
@@ -35,6 +33,16 @@ class EventsController < ApplicationController
       format.js
       format.html {}
      end 
+     if params[:search]
+        name=params[:search]
+        name.split(",").last
+        @events=Event.where(:title => name)
+        @events.each do |m|
+          @searchevent=m
+        end
+      else
+        @events=Event.all
+      end
   end
   def search
     render :text => "ASsa"
@@ -43,9 +51,9 @@ class EventsController < ApplicationController
   def show
     @onshow = "onshow"
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
-      puts event.latitude
-       puts marker.lat event.latitude
-      marker.lng event.longitude
+       marker.lat event.latitude
+       marker.lng event.longitude
+
     end
     #@comment=Comment.new
   end
@@ -65,7 +73,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
       if @event.save
-         redirect_to @event, notice: 'Event was successfully created.' 
+         redirect_to @event
       else
          render :new 
       end  
@@ -82,7 +90,7 @@ class EventsController < ApplicationController
   def destroy
   	if (current_user.id==@event.user_id)
     	@event.destroy
-       redirect_to events_url, notice: 'Event was successfully destroyed.'
+       redirect_to events_url
     else
     	render :text=> "ko praish momche"
     end    

@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :users do 
     resources :cars
   end
-   resources :events  do
+    resources :events  do
+    resources :enrollments 
       resources :comments
       resources :results
-      resources :enrollments 
    end
     match '/attend/:id' => 'events#attend', via: :get
   # match '/attend/:id' => 'events#attend', via: :post
@@ -17,13 +17,13 @@ Rails.application.routes.draw do
        match '/myevents' => 'users#myevents', via: :get
     match '/myevents' => 'users#myevents', via: :post
     match '/events/:id/comments/new' => 'comments#create', via: :post
+      match '/events/:id/comments' => 'comments#index', via: :get
     match '/events/:id/comments/:id/edit' => 'comments#edit', via: :put
     match '/events/:id/like' => 'events#like', via: :post
      match '/events/:id/like' => 'events#like', via: :get
          match '/events/:id/unlike' => 'events#unlike', via: :post
      match '/events/:id/unlike' => 'events#unlike', via: :get
     match '/users/:id/cars/new' => 'cars#create', via: :post
-    match '/events/:id/enrollments/new'=> 'enrollments#create', via: :post
      match '/events/:id/enrollments/:id'=> 'enrollments#destroy', via: :delete
      match '/users/:id/usercars' => 'users#usercars' , via: :get
      match '/users/:id/userevents' => 'users#userevents' , via: :get
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
        match '/events/:id/classawd'=> 'results#classawd', via: :get
        match '/events/:id/enrollments'=> 'enrollments#index', via: :get
        match 'users/:id/mygallery' => 'users#mygallery', via: :get
+
       #match '/users/:id/usercars' => 'users#usercars' , via: :get
     # match '/events/:id/comments/show' => 'comments#show', via: :get
   root "welcome#Welcome"

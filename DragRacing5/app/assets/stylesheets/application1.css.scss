@@ -72,6 +72,9 @@
 .profilepic{
 	border-radius: 50%;
 }
+.commentpic{
+	border-radius: 50%;
+}
 .userstable{
 	td {
 	  padding: 0px 50px;
@@ -88,8 +91,22 @@
 }
 .mycarpage{
 	width: 400px;
-		height: 400px;
-		margin-left: 30%;
-		margin-top: 10%;
+		height: 350px;
+		}
+.newcarmark{
+	width: 50%;
+	height: 8%;
 }
-
+.newcar{
+	margin-top: 4%;
+	margin-left: 35%;
+	width: 30%;
+	height: 30%;
+}
+.carparams{
+	margin-top: 10%;
+	margin-left: 15%;
+}
+.panel-heading{
+	font-family: "Architects Daughter"
+}

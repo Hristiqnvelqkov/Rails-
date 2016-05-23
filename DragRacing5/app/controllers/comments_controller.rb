@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create]
    def index
    	 @event = Event.find(params[:event_id])
-     @comment=Comment.new
+     #@comment=Comment.new
    end
    def show
    end
@@ -19,8 +19,15 @@ class CommentsController < ApplicationController
      end
    end
    def edit
+     @event = Event.find(params[:event_id])
    	 @comment=Comment.find(params[:id])
    end
+   def update
+     @event = Event.find(params[:event_id])
+       @comment=Comment.find(params[:id])
+      @comment.update(comment_params)
+      render :index
+    end
    def new
      @comment = Comment.new 
    end
@@ -28,7 +35,6 @@ class CommentsController < ApplicationController
   	@event=Event.find(params[:id])
   	@comment = current_user.comments.build(comment_params)
     @event.comments << current_user.comments.build(comment_params)
-    redirect_to root_url
      if @comment.save
         redirect_to :action => :index
     else
@@ -37,5 +43,8 @@ class CommentsController < ApplicationController
   end
    def comment_params
     	params.require(:comment).permit(:newcomment)
+    end
+     def comment_params1
+       params.permit(:comment, { newcomment: [] })
     end
 end
