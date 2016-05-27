@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:create]
    def index
    	 @event = Event.find(params[:event_id])
+     @comment = @event.comments.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
      #@comment=Comment.new
    end
    def show
@@ -43,8 +44,5 @@ class CommentsController < ApplicationController
   end
    def comment_params
     	params.require(:comment).permit(:newcomment)
-    end
-     def comment_params1
-       params.permit(:comment, { newcomment: [] })
     end
 end

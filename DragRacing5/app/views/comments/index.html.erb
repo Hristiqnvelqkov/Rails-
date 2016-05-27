@@ -1,4 +1,4 @@
-<%@event.comments.each do |text| %>
+<%@comment.each do |text| %>
 	<br>
 	<%if (User.exists?(id: text.user_id))%>
 		<%person=User.find(text.user_id)%>
@@ -22,11 +22,16 @@
 			</div>
 		<%end%>
 	<%end%>
-	<br>
 <%end%>
+<div class="pagination" >
+	<% unless @comment.empty? %>
+		 <%= will_paginate @comment, renderer: BootstrapPagination::Rails %>
+ 	<%end%>
+</div>
+<br>
 <div class="hvr-grow-rotate">
 	<ul class="pager">
-    	<li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft') %>
+    	<li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft','data-no-turbolink' => true) %>
 		</li><span aria-hidden="true"></span> </a></li>
 	</ul>
 </div>

@@ -23,10 +23,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-          <li><%=link_to "My Events",{:controller=>"users",:action=>"myevents"}%></li>
-        	<li><%= link_to "Edit profile", edit_user_registration_path%></li>
-           <li><%= link_to "mycars" ,{:controller =>"cars", :action=>"index", :user_id =>current_user.id}%></li>
-           <li><%= link_to "mygallery" ,{:controller =>"users", :action=>"mygallery"}%></li>
+          <li><%=link_to "My Events",{:controller=>"users",:action=>"myevents"},:style => "font-family: Architects Daughter;"%></li>
+        	<li><%= link_to "Edit profile", edit_user_registration_path,:style => "font-family: Architects Daughter"%></li>
+           <li><%= link_to "mycars" ,{:controller =>"cars", :action=>"index", :user_id =>current_user.id},:style => "font-family: Architects Daughter;"%></li>
+           <li><%= link_to "mygallery" ,{:controller =>"users", :action=>"mygallery"},:style => "font-family: Architects Daughter;"%></li>
           </ul>
         </li>
       </ul>
@@ -35,5 +35,5 @@
 
 </nav>
 <div class="hvr-shrink">
-<%=link_to "Back",events_path,class: 'btn btn-default'%>
+<%=link_to "Back",events_path,class: 'btn btn-default','data-no-turbolink' => true%>
 </div>

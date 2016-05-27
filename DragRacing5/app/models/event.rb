@@ -32,4 +32,7 @@ class Event < ActiveRecord::Base
 #     		find(:all)
 #   		end
 # 	end
+
+  self.per_page = 5
+# set per_page globally
  end

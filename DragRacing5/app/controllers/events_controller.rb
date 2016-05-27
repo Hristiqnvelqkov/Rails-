@@ -28,6 +28,8 @@ class EventsController < ApplicationController
   end  
   def index
     @events = Event.all
+    @events_search=Array.new
+    @event = Event.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
     @onindex = "indexpage"
     respond_to do |format|
       format.js
@@ -36,8 +38,8 @@ class EventsController < ApplicationController
      if params[:search]
         name=params[:search]
         name.split(",").last
-        @events=Event.where(:title => name)
-        @events.each do |m|
+        @events_search=Event.where(:title => name)
+        @events_search.each do |m|
           @searchevent=m
         end
       else

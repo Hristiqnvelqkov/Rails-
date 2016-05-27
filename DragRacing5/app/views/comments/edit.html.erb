@@ -1,8 +1,7 @@
-<br>
-<%=form_for :comment  do |f| %>
+<%=form_for [@event,@comment]  do |f| %>
 	<div class="newcomment">
 		<%=f.text_area :newcomment,class: "input-group form-control",placeholder: "Add comment"%>
 	</div>
 	<br>
-	 <%= link_to "Post",{:action => "update"}, class: 'btn btn-primary',:method => :put %>
+	 <%= f.submit "Post"%>
 <%end%>

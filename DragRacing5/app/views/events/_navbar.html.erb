@@ -8,20 +8,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <li class="navbar-brand"><big>DragRacing</big></li>
+      <li class="navbar-brand" style='color:#FFFFFF;'><big>DragRacing</big></li>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       <%if @onindex !="indexpage"%>
-          <li class="mybuttons"><%=link_to "Home",events_path%></li>
+          <li class="mybuttons"><%=link_to "Home",events_path,:style => 'color:#FFFFFF;'%></li>
         <%end%>
         <%if @onshow =="onshow"%>
          <%if user_signed_in? %>
         <%if current_user.id==@event.user_id%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Event Options <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style = 'color:#FFFFFF;'>Event Options <span class="caret"></span></a>
           <ul class="dropdown-menu">
           <li class='mybuttons'> <%= link_to 'Destroy', {:controller =>"events", :action => "destroy" ,:event_id => @event.id}, method: :delete, data: { confirm: 'Are you sure?' } %></li>
            <li class='mybuttons'> <%= link_to 'Edit',edit_event_path(@event) %></li>
@@ -58,13 +58,13 @@
       <ul class="nav navbar-nav navbar-right">
         <%if user_signed_in? %>
             <%if @mem!="userspage"%>
-          <li class="mybuttons"><%=link_to "Users", { :controller => "users", :action => "all"} %></li>
+          <li class="mybuttons"><%=link_to "Users", { :controller => "users", :action => "all"},:style => 'color:#FFFFFF;' %></li>
             <%else%>
               <li class="active"><%=link_to "Users", { :controller => "users", :action => "all"} %></li>
               <%end%>
         <%end%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style = 'color:#FFFFFF;'>Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <%if user_signed_in? %>
             <%if @myev!="myevents"%>

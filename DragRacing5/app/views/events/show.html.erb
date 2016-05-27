@@ -16,7 +16,7 @@
 <div class="panel panel-primary" style="width: 80%;">
   <div class="panel-heading" ><big><big><%=@event.title%></big></big></div>
   <div class="panel-body" >
- <%=@event.description%>
+ <%=@event.description.scan(/.{90}|.+/).join("\n")%>
 <!-- <div class="enroll">
 <%= link_to(content_tag(:span, @event.enrollments.size , class:"badge")+"Enrollments",{:controller => "enrollments", :action => "index", :id => @event.id}, class: 'btn btn-primary')%> 
  </div> -->
@@ -27,19 +27,22 @@
 	<tbody>
 	<%@exist=0%>
 	<%if user_signed_in?%>
-		<%@event.enrollments.each do |xa| %>	
-			<%if xa.user_id==current_user.id%>
-				<%@exist = 1 %>
-				<%@enrollment=xa%>
+		<%if (User.exists?(id: @event.user_id))%>
+			<%@event.enrollments.each do |xa| %>	
+				<%if xa.user_id==current_user.id%>
+					<%@exist = 1 %>
+					<%@enrollment=xa%>
+				<%end%>
 			<%end%>
-		<%end%>
-		<tbody>
-		<tr>
-		<td>
-		<%if @exist==1 %>
-			<%= link_to "Cancel", { :controller => "enrollments", :action => "destroy",:enrollment_id => @enrollment.id},method: :delete,class: 'btn btn-danger','data-no-turbolink' => true %>
-		<%elsif @exist==0%>
-			<%= link_to "Join", { :controller => "enrollments", :action => "new",:event_id => @event.id},class: 'btn btn-primary','data-no-turbolink' => true %>
+			<tbody>
+			<tr>
+			<td>
+			<%if @exist==1 %>
+				<%= link_to "Cancel", { :controller => "enrollments", :action => "destroy",:enrollment_id => @enrollment.id},method: :delete,class: 'btn btn-danger','data-no-turbolink' => true,:style=>'color:#FFFFFF;' %>
+			<%elsif @exist==0%>
+				<%= link_to "Join", { :controller => "enrollments", :action => "new",:event_id => @event.id},class: 'btn btn-primary','data-no-turbolink' => true,:style=>'color:#FFFFFF;' %>
+			
+			<%end%>
 		<%end%>
 		</td>
 	<%end%>
@@ -110,7 +113,7 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 });
 </script>
 <ul class="pager">
-    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),events_path, class: 'animated zoomInDown') %>
+    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),events_path, class: 'animated zoomInDown','data-no-turbolink' => true) %>
 	</li><span aria-hidden="true"></span> </a></li>
 </ul>
   </body>

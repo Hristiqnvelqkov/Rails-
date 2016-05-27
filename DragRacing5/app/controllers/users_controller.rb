@@ -19,7 +19,13 @@ class UsersController < ApplicationController
 	def all
 		@mem="userspage"
 		@members=Array.new
-		@members=User.all
+		 if params[:search]
+       	 name=params[:search]
+        name.split(",").last
+        @members=User.where(:email => name)
+      else
+        @members=User.all
+      end
 		#member.each do |mem|
 		#@members<<mem.email	
 		#end

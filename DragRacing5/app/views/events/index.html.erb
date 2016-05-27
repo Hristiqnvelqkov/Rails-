@@ -15,10 +15,46 @@
   </div>
   </div> 
  <% i=0%>
-    <% @events.each do |event| %>
+ <table style="margin-left: 5%;">
+ <tbody>
+ <tr>
+ <%if (@events_search.size <= 0)%>
+    <% @event.each do |event| %>
       <%i+=1%>
+      <td>
         <div class="row" >
-          <div class="col-sm-6 col-md-4" style="width :20%; margin-left: 3%">
+          <div class="col-sm-6 col-md-4" style="width :50%; margin-left: 3%">
+            <div class="thumbnail">
+              <%if event.avatar_file_name==nil%>
+                <%=image_tag("no-photo.png")%>
+              <%else%> 
+                <%=image_tag event.avatar(:medium)%>
+              <%end%>
+              <div class="caption">
+                <h2><%=event.title%></h2>
+               <%=link_to "Learn More",{:controller => "events", :action => "show", :id => event.id }, class: 'btn btn-primary','data-no-turbolink' => true,:style=>'color:#FFFFFF;'%>
+              </div>
+            </div>
+          </div>
+          </div>
+          </td>
+          <%if i>=3%>
+              <%i=0%>
+              </tr>  
+              <tr>
+          <%else%>
+              <%next%>
+          <%end%>
+  <%end%>
+<br>
+</tbody>
+</table>
+<%else%>
+ <% @events_search.each do |event| %>
+      <%i+=1%>
+      <td>
+        <div class="row" >
+          <div class="col-sm-6 col-md-4" style="width :50%; margin-left: 3%">
             <div class="thumbnail">
               <%if event.avatar_file_name==nil%>
                 <%=image_tag("no-photo.png")%>
@@ -31,12 +67,24 @@
               </div>
             </div>
           </div>
-          <%if i>=4%>
+          </div>
+          </td>
+          <%if i>=3%>
           <%i=0%>
-       </div>   
+          </tr>  
+          <tr>
        <%else%>
        <%next%>
        <%end%>
   <%end%>
 <br>
+<%end%>
+</tbody>
+</table>
+
+<div class="pagination">
+<% unless @event.empty? %>
+   <%= will_paginate @event, renderer: BootstrapPagination::Rails %>
+<% end %>
+</div>
 

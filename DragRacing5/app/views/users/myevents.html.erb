@@ -14,7 +14,7 @@
      <%end%>
       <div class="caption">
          <h2><%=event.title%></h2>
-          <%=link_to "Learn More",{:controller => "events", :action => "show", :id => event.id}, class: 'btn btn-primary'%>
+          <%=link_to "Learn More",{:controller => "events", :action => "show", :id => event.id}, class: 'btn btn-primary','data-no-turbolink' => true%>
       </div>
     </div>
   </div>

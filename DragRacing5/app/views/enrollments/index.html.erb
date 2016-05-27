@@ -18,7 +18,7 @@
 		</table>
 	</div>	
 	<ul class="pager">
-    	<li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft') %>
+    	<li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@event, class: 'animated bounceInLeft','data-no-turbolink' => true) %>
   		</li><span aria-hidden="true"></span> </a></li>
 	</ul>
 </div>
