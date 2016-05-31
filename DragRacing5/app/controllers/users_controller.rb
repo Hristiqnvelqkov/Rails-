@@ -3,7 +3,9 @@ class UsersController < ApplicationController
 	def mygallery
 		@pictures=Array.new	
 		current_user.cars.each do |haha|
-			@pictures<<haha.avatar
+			if (haha.avatar_content_type!=nil)
+				@pictures<<haha.avatar
+			end
 		end
 	end
 	def userpage

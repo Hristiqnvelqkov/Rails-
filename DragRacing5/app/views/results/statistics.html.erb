@@ -1,4 +1,7 @@
-<h3>Results<span class="label label-primary">Show</span></h3>
+<%=render "events/navbar"%>
+<br>
+<br>
+<h3>Results<span class="label label-primary" >Show</span></h3>
 <%test=Hash.new%>
 <%test=@statis.sort_by {|k, v| v }%>
 <%position=0%>
@@ -20,7 +23,7 @@
 <%end%>
 <%i=0%>
 <div class="panel panel-default" style="width: 85%;">
-    <div class="panel-heading">Panel heading</div>
+    <div class="panel-heading">ALL STAT</div>
   	<table class="table">
   		<td>#</td>
     	<td><strong>Name</strong></td>
@@ -46,6 +49,6 @@
 	</table>
 </div>
 <ul class="pager">
-	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:action => "index", :event_id =>@event.id}, class: 'animated bounceInLeft') %>
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:action => "index", :event_id =>@event.id}, class: 'animated bounceInLeft','data-no-turbolink' => true) %>
 	</li><span aria-hidden="true"></span> </a></li>
 </ul>

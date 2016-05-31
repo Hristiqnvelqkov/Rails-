@@ -8,7 +8,7 @@
   <div class="panel panel-primary" style="height:460px;width:500px;margin-left: 35%;margin-top: 5%;">
    <div class="panel-heading"><b>Create account</b></div>
    <br> 
-    <%= f.file_field :avatar,style: "margin-left: 7%;" %>
+    <%= f.file_field :avatar,style: "margin-left: 7%;" , class: 'btn btn-info'%>
 <div class="Info" style="margin-left: 7%;">
   <div class="field">
   <br>
@@ -43,10 +43,10 @@
 
   <div class="actions">
     <%= f.submit "Sign up", class: "btn btn-success" ,style: "margin-left: 7%;"%>
-    <%=link_to "Cancel", events_path, class: "btn btn-danger",data: {confirm: "Are you sure?"}%>
+    <%=link_to "Cancel", events_path, class: "btn btn-danger",data: {confirm: "Are you sure?"},:style => "color:#FFFFFF;"%>
   </div>
 <% end %>
 <hr>
-<%= link_to "Log in", new_session_path(resource_name) , class: 'btn btn-primary',style: "margin-left: 45%;"%><br />
+<%= link_to "Log in", new_session_path(resource_name) , class: 'btn btn-primary',style: "margin-left: 45%;color:#FFFFFF;"%><br />
 </div>
 </span>

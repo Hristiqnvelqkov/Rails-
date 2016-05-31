@@ -1,7 +1,20 @@
-<%=form_for [@event,@comment]  do |f| %>
-	<div class="newcomment">
-		<%=f.text_area :newcomment,class: "input-group form-control",placeholder: "Add comment"%>
-	</div>
-	<br>
-	 <%= f.submit "Post"%>
-<%end%>
+<%=render "events/navbar"%>
+<div class="edit_comment" style="margin-top: 10%;margin-left:35%;">
+<h3>Edit<span class="label label-warning">Comment</span></h3>
+<div class="panel panel-success" style="width: 50%;">
+  <div class="panel-heading">Comment form</div>
+  <div class="panel-body">
+ 	<%=form_for [@event,@comment]  do |f| %>
+		<div class="newcomment">
+			<%=f.text_area :newcomment,class: "input-group form-control",placeholder: "Add comment"%>
+		</div>
+		<br>
+		 <%= f.submit "Edit",class: "btn btn-success"%>
+	<%end%>
+</div>
+</div>
+</div>
+<ul class="pager">
+    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:action => "index",:event_id => @event.id}, class: 'animated zoomInDown','data-no-turbolink' => true) %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

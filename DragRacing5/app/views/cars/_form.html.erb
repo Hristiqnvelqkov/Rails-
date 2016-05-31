@@ -1,0 +1,40 @@
+<%=render "events/navbar"%>
+<div class="newcar">
+<div class="panel panel-primary">
+  <div class="panel-heading">Panel heading without title</div>
+  <div class="panel-body">
+   <%= form_for [current_user, @car ] do |f| %>
+  <%= f.file_field :avatar, class: "btn btn-info" %>
+	<br>
+	<div class="newcarmark">
+		<%=f.text_area :mark, class: "form-control",:placeholder => "Enter car mark"%>
+	</div>
+	<br>
+	<%@years=Array.new%>
+	<%for i in 0..1500%>
+		<%@years<<i%>
+	<%end%> 
+	<%=f.label :horsepower%>
+	<%= f.select(:horsepower, ((@years)),{}, {class: "form-control"}) %>
+	<br>
+	<%=f.label :wheeldrive%>
+	<%= f.select :wheeldrive, (['front', 'rear','all']),{}, {class: "form-control"}%>
+	<br>
+	<%=f.label :Engine%>
+	<%= f.select :enginetype, (['diesel', 'gasoline','electric','methane','propane-butane']),{}, {class: "form-control"}%>
+	<br>
+	<%=f.label :Transmission%>
+	<%= f.select :transmission, (['manuel', 'automatic','dual-clutch']),{}, {class: "form-control"}%>
+	<br>
+	<%=f.label :Coupe%>
+	<%= f.select :coupe, (['Coupe', 'Touring','Convertible','Hatchback','Sedan']),{}, {class: "form-control"}%>
+	<br>
+		<%=f.submit "Post", class: "btn btn-primary"%>
+<%end%>
+  </div>
+</div>
+</div>
+<ul class="pager">
+    <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:action=>"index"}, class: 'animated bounceInLeft') %>
+  </li><span aria-hidden="true"></span> </a></li>
+</ul>

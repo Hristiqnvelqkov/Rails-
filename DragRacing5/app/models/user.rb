@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_voter
+  devise :registerable, :confirmable
   has_many :enrollments
   has_many :events
   has_many :comments

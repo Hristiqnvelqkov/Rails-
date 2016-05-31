@@ -9,17 +9,26 @@
 		<%if table > 3%>
 				<tr>
 		 			<td>	
-		 				<%= link_to  do %>
-							<%= image_tag c.avatar.url(:medium) , :size => "300x300" %>,
-							<%{:controller => "cars" ,:action => "show" ,:id => c.id, :user_id=>c.user_id}%>
-						<%end%>
+		 				<%if (c.avatar_content_type!=nil)%>
+					<%=link_to (image_tag c.avatar.url(:medium) , :size => "150x150"),{:action => "show" ,:id => c.id} %>
+				<%else%>
+					<%= link_to do %>
+					<%=link_to (image_tag  'no-photo.png', :size => "150x150"),{:action => "show" ,:id => c.id} %>
+					<%end%>
+				<%end%>
 					</td>
 				</tr>
 				<%table=0%>
 				<%next%>
 			<%else%>
 				<td>
+				<%if (c.avatar_content_type!=nil)%>
 					<%=link_to (image_tag c.avatar.url(:medium) , :size => "150x150"),{:action => "show" ,:id => c.id} %>
+				<%else%>
+					<%= link_to do %>
+					<%=link_to (image_tag  'no-photo.png', :size => "150x150"),{:action => "show" ,:id => c.id} %>
+					<%end%>
+				<%end%>
 				</td>
 				<br>
 				</td>

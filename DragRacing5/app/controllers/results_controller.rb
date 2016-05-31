@@ -1,4 +1,5 @@
 class ResultsController < ApplicationController
+	  before_action :authenticate_user!, :only => [:create, :new]
 	def index
 		@event=Event.find(params[:event_id])
 	end
@@ -118,8 +119,6 @@ class ResultsController < ApplicationController
 				end	
 			end
 		end	
-	end
-	def destroy
 	end
 	def result_params
 		params.require(:result).permit(:user_result,:visitor_id)

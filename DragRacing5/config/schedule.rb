@@ -15,7 +15,7 @@
 set :output, "#{path}/log/cron.log"
 env :PATH, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin'
 set :environment, "development"
-every 10.hours do
+every 15.minutes do
   runner "Event.send_digest_email"
    #command 'RAILS_ENV=production bundle exec rake -T'
 end

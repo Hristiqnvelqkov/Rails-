@@ -1,26 +1,41 @@
-<table class="mycars">
+<%=render "events/navbar"%>
+<div class="mycarspage" style="height:400px; background-position: center;">
+</div>
+<table class="mycars" style "margin-top:50%;">
+<hr>
+<%table=0%>
 	<%@user.cars.each do |c|%>
-		<br>
-		<tr>
-			<td>
-				<%= image_tag c.avatar.url(:medium) %>
-			</td>
-			<td>	
-				<strong>Mark: </strong>
-				<%=c.mark%>
-			</td>
-			<td>
-			<strong>Horsepower :</strong>
-			<%=c.horsepower%>
-			</td>
-			<td>
-			<strong>Wheeldrive :</strong>
-			<%=c.wheeldrive%>
-			</td>
-		</tr>
-	<%end%>	
-</table>
+		<%if table > 3%>
+				<tr>
+		 			<td>	
+		 				<%if (c.avatar_content_type!=nil)%>
+					<%=link_to (image_tag c.avatar.url(:medium) , :size => "150x150"),{:controller => "cars",:action => "usercarshow" ,:id => c.id,:user_id => c.user_id} %>
+				<%else%>
+					<%= link_to do %>
+					<%=link_to (image_tag  'no-photo.png', :size => "150x150"),{:controller => "cars",:action => "usercarshow", :id => c.id,:user_id=>c.user_id} %>
+					<%end%>
+				<%end%>
+					</td>
+				</tr>
+				<%table=0%>
+				<%next%>
+			<%else%>
+				<td>
+				<%if (c.avatar_content_type!=nil)%>
+					<%=link_to (image_tag c.avatar.url(:medium) , :size => "150x150"),{:controller => "cars",:action => "usercarshow" ,:id => c.id,:user_id => c.user_id} %>
+				<%else%>
+					<%= link_to do %>
+					<%=link_to (image_tag  'no-photo.png', :size => "150x150"),{:controller => "cars",:action => "usercarshow",:id => c.id,:user_id => c.user_id} %>
+					<%end%>
+				<%end%>
+				</td>
+				<br>
+				</td>
+				<%table+=1%>
+			<%end%>
+		<%end%>
+</table>	
 <ul class="pager">
-	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),current_user, class: 'animated bounceInLeft') %>
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@user, class: 'animated bounceInLeft') %>
 	</li><span aria-hidden="true"></span> </a></li>
 </ul>

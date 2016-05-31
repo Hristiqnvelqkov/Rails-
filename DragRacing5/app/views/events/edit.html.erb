@@ -1,6 +1,8 @@
 <h1>Editing Event</h1>
-
+	<%= render "events/navbar"%>
 	<%= render 'form' %>
 <br>
-<%= link_to 'Show', @event,'data-no-turbolink' => true %> |
-<%= link_to 'Back', events_path,'data-no-turbolink' => true %>
+<ul class="pager">
+	  <li class="previous"> <<%= link_to 'Back', @event,'data-no-turbolink' => true %>
+	  </li>
+</ul>

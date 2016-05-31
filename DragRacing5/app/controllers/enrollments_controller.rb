@@ -1,12 +1,14 @@
 class EnrollmentsController < ApplicationController
+	   before_action :authenticate_user!, :except => [:index]
 	def new
 		@enrollment=Enrollment.new
 		@event = Event.find(params[:event_id])
 	end
 	def destroy
+		@event=Event.find(params[:event_id])
 		@enrollment=Enrollment.find(params[:enrollment_id])
 		@enrollment.delete
-		redirect_to root_url
+		redirect_to @event
 	end
 	def index
 		@event = Event.find(params[:event_id])
@@ -24,7 +26,7 @@ class EnrollmentsController < ApplicationController
 			event_creator=User.find(event_creator_id)
 			UserMailer.welcome_email(event_creator,current_user).deliver_now
 			@event.enrollments<<@enrollment
-			redirect_to root_url	
+			redirect_to @event	
 		else 
 			redirect_to @event
 		end		

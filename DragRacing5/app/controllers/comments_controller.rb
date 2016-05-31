@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only:[:new,:create]
+  before_action :authenticate_user!, only:[:new,:create,:edit]
    def index
    	 @event = Event.find(params[:event_id])
      @comment = @event.comments.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
@@ -15,19 +15,21 @@ class CommentsController < ApplicationController
          format.html {redirect_to root_url}
          format.js
         end  
-     else
-    	render :text=> "ko praish momche"
      end
    end
    def edit
-     @event = Event.find(params[:event_id])
-   	 @comment=Comment.find(params[:id])
+      @event = Event.find(params[:event_id])
+      @comment=Comment.find(params[:id])
+    if (current_user.id==@comment.user_id)
+      else 
+        redirect_to event_comments_path
+      end
    end
    def update
      @event = Event.find(params[:event_id])
        @comment=Comment.find(params[:id])
       @comment.update(comment_params)
-      render :index
+      redirect_to event_comments_path
     end
    def new
      @comment = Comment.new 
@@ -39,9 +41,11 @@ class CommentsController < ApplicationController
      if @comment.save
         redirect_to :action => :index
     else
-      render :text => "assa"
+      redirect_to new_event_comment_path notice: 'Comment was  not successfully updated.' 
+
     end
   end
+  private
    def comment_params
     	params.require(:comment).permit(:newcomment)
     end

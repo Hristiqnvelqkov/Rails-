@@ -1,21 +1,21 @@
 <%=render "events/navbar"%>
 <%table=0%>
-<table class="table_pictures">
+<table class="table_pictures" style="margin-top:8%">
 	<%if @pictures.empty?%>
-	 	<%=image_tag('no-thumb.jpg', size: "400x400",style: "margin-top:10%;margin-left:30%;")%>
+	 	<%=image_tag('no-thumb.jpg', size: "400x400",style: ";margin-left:30%;")%>
 	<%else%>	
 		<%@pictures.each do |haha|%> 
-			<%if table > 1%>
+			<%if table > 2%>
 				<tr>
 		 			<td>	
-						<%= image_tag haha.url(:medium) , :size => "300x300" %>
+						<%= image_tag haha.url(:medium) , :size => "300x300",style: ";margin-left:3%;" %>
 					</td>
 				</tr>
 				<%table=0%>
 				<%next%>
 			<%else%>
 				<td>
-					<%= image_tag haha.url(:medium) , :size => "300x300" %>
+					<%= image_tag haha.url(:medium) , :size => "300x300",style: ";margin-left:3%;" %>
 				<br>
 				</td>
 				<%table+=1%>

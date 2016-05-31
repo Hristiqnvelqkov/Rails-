@@ -1,14 +1,22 @@
 <center><div class="panel panel-primary" style="width: 30%;margin-top: 10%;">
 	  <div class="panel-heading">Panel heading without title</div>
 	  <div class="panel-body">
-	    <%=form_for ([@event, @enrollment]) do |f|%>
-			<%= f.select(:car_id) do %>
-				<% current_user.cars.each do |c| -%>
-		    		<%= content_tag(:option, c.mark, value: c.id) %>
-		  		<% end %>
-			<% end %>
-			<br>
-			<%=f.submit :save,class: 'btn btn-primary',:style => "margin-top:10%;" %>
+	  	<%if (current_user.cars.empty?)==false%>
+		    <%=form_for ([@event, @enrollment]) do |f|%>
+				<%= f.select(:car_id) do %>
+					<% current_user.cars.each do |c| -%>
+			    		<%= content_tag(:option, c.mark, value: c.id) %>
+			  		<% end %>
+				<% end %>
+				<br>
+				<%=f.submit :save,class: 'btn btn-primary',:style => "margin-top:10%;" %>
+		   	<%end%>
+		<%else%>
+			<div class="alert alert-danger" role="alert">
+			  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			  <span class="sr-only">Error:</span>
+			  You can't join without car
+			</div>   	
 	   	<%end%>
 	  </div>
 	</div>

@@ -71,6 +71,8 @@
 }
 .profilepic{
 	border-radius: 50%;
+	min-width: 95px;
+	min-height: 95px;
 }
 .commentpic{
 	border-radius: 50%;
@@ -121,4 +123,13 @@
 }
 .navbar-header{
 	font-family: "Architects Daughter"	
+}
+.thumbnail{        
+    width: 230px; // or you could use percentage value for responsive layout
+    height: 310px;
+    overflow: auto;
+}
+.thumbnail img {
+	 width: 220px; // or you could use percentage value for responsive layout
+    height: 150px;
 }

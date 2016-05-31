@@ -1,5 +1,6 @@
-<div class="panel panel-default" style="width: 60%;">
-    <div class="panel-heading">Panel heading</div>
+<%=render "events/navbar"%>
+<div class="panel panel-default" style="width: 60%;margin-top:5%;">
+    <div class="panel-heading">All Times</div>
   	<table class="table"%>
   		<td>Email</td>
     	<td><strong>Time</strong></td>
@@ -18,6 +19,6 @@
 	    <li class="previous"> <%= link_to(content_tag(:rel, "fwdstatiscs" , href:"animate.min.css"),{:controller => "results", :action => "classfwd", :id => @event.id}, class: 'animated bounceInLeft') %></li>
 	      <li class="previous"> <%= link_to(content_tag(:rel, "rwdtatistics" , href:"animate.min.css"),{:controller => "results", :action => "classrwd", :id => @event.id}, class: 'animated bounceInLeft') %></li>
 	        <li class="previous"> <%= link_to(content_tag(:rel, "awdstatiscs" , href:"animate.min.css"),{:controller => "results", :action => "classawd", :id => @event.id}, class: 'animated bounceInRight') %></li>
-	        <li class="previous"> <%=link_to "Back",@event,class: 'animated bounceInRight'%></li><span aria-hidden="true"></span> </a></li>
+	        <li class="previous"> <%=link_to "Back",@event,class: 'animated bounceInRight','data-no-turbolink' => true%></li><span aria-hidden="true"></span> </a></li>
 	</li><span aria-hidden="true"></span> </a></li>
 </ul>

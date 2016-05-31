@@ -4,22 +4,24 @@
 		<%person=User.find(text.user_id)%>
 		<%if (person.avatar_content_type==nil)%>
 				 		<%= link_to person do %>
-	 						<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+	 						<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic hvr-skew-forward")%>
 						<%end%>
 					<%else%>
 						<%= link_to person do %>
-  							<%=image_tag person.avatar.url(:thumb),class: "profilepic" %>
+  							<%=image_tag person.avatar.url(:thumb),class: "profilepic hvr-skew-forward " %>
   						<%end%>
 					<%end%>
-				 	<%=link_to person.email,person%>
+				 	<%=link_to person.email,person ,class: 'hvr-skew-forward', style: ""%>
 		<br>
 		<%=text.newcomment%>
 		<br>
-		<%if (current_user.id==text.user_id)%>
-			<div class="hvr-float">
-			<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit",:id=>text.id}%>
-			<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id,:remote => true},:method => :delete%>
-			</div>
+		<%if user_signed_in?%>
+			<%if (current_user.id==text.user_id)%>
+				<div class="hvr-float">
+				<%=link_to "Edit comment",{:controller =>"comments", :action =>"edit",:id=>text.id}%>
+				<%=link_to "Delete comment",{:controller =>"comments", :action =>"destroy",:id=>text.id,:remote => true},:method => :delete%>
+				</div>
+			<%end%>
 		<%end%>
 	<%end%>
 <%end%>

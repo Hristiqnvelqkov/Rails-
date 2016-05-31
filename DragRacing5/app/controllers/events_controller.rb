@@ -29,7 +29,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @events_search=Array.new
-    @event = Event.paginate(:per_page => 5, :page => params[:page]).order('created_at DESC')
+    @event = Event.paginate(:per_page => 3, :page => params[:page]).order('created_at DESC')
     @onindex = "indexpage"
     respond_to do |format|
       format.js
@@ -46,10 +46,10 @@ class EventsController < ApplicationController
         @events=Event.all
       end
   end
-  def search
-    render :text => "ASsa"
-   @events = Event.search(params[:search])
-  end
+  # def search
+  #   render :text => "ASsa"
+  #  @events = Event.search(params[:search])
+  # end
   def show
     @onshow = "onshow"
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
@@ -68,7 +68,7 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
   	if (current_user.id!=@event.user_id)
-  		render :text=>"dsisdids"
+  		redirect_to events_path
   	end
   end
 
@@ -94,7 +94,7 @@ class EventsController < ApplicationController
     	@event.destroy
        redirect_to events_url
     else
-    	render :text=> "ko praish momche"
+    	redirect_to @event
     end    
   end
 

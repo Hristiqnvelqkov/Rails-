@@ -1,11 +1,12 @@
 <%=render "newnavbar"%>
 <br>
 <br>
+<div class="log_in_form" style="margin-left:30%;margin-top:5%;">
 <span class='animated zoomInDown'>
 <h3>Log<span class="label label-primary">In</span></h3>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-	<div class="panel panel-primary" style="height:365px;width:500px" >
-	 <div class="panel-heading">Panel heading without title</div>
+	<div class="panel panel-primary" style="height:420px;width:500px" >
+	 <div class="panel-heading">User Log In</div>
 	 <div class="panel-body">
   	<div class="Info">
   		<div class="field">
@@ -41,3 +42,4 @@
 </div>
 </div>
 </span>
+</div>

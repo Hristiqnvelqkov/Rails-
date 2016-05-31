@@ -22,8 +22,12 @@
     <% @event.each do |event| %>
       <%i+=1%>
       <td>
-        <div class="row" >
-          <div class="col-sm-6 col-md-4" style="width :50%; margin-left: 3%">
+        <div class="row"  >
+        <%if i==1%>
+          <div class="col-sm-6 col-md-4" style=" margin-left: 5%;">
+          <%else%>
+            <div class="col-sm-6 col-md-4" style=" margin-left: 45%;">
+          <%end%>
             <div class="thumbnail">
               <%if event.avatar_file_name==nil%>
                 <%=image_tag("no-photo.png")%>
@@ -31,7 +35,7 @@
                 <%=image_tag event.avatar(:medium)%>
               <%end%>
               <div class="caption">
-                <h2><%=event.title%></h2>
+                <h2><%=event.title.scan(/.{10}|.+/).join("\n")%></h2>
                <%=link_to "Learn More",{:controller => "events", :action => "show", :id => event.id }, class: 'btn btn-primary','data-no-turbolink' => true,:style=>'color:#FFFFFF;'%>
               </div>
             </div>

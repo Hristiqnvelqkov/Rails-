@@ -1,3 +1,4 @@
+<%= render "events/navbar"%>
 <table class="carparams">
 <td width="50%;">
 <big><big>Mark:</big></big>
@@ -20,8 +21,14 @@
 <hr>
 </td>
 <td>
-<%= image_tag @car.avatar.url(:medium) ,class: "mycarpage"%>
+<%if (@car.avatar_content_type!=nil)%>
+	<%= image_tag @car.avatar.url(:medium) ,class: "mycarpage"%>
+<%else%>
+	<%=image_tag('no-photo.png', :size => "300x300")%>
+<%end%>
 </td>
 </table>
 <ul class="pager"> <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),{:controller => "cars", :action =>"index" }, class: ' animated slideInDown') %></li></td>
+ <%= link_to(content_tag(:rel, "Delete Car" , href:"animate.min.css"),{:controller => "cars", :action =>"destroy", :id => @car.id }, class: 'btn btn-danger',:style => 'color:#FFFFFF;',:method => :delete) %>
+ <%= link_to(content_tag(:rel, "Еdit Car" , href:"animate.min.css"),{:action =>"edit", :id => @car.id }, class: 'btn btn-warning', :style => 'color:#FFFFFF;') %>
 	</ul>

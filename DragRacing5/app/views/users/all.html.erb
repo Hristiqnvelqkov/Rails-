@@ -12,11 +12,11 @@
 				 <td>
 				 	<%if (m.avatar_content_type==nil)%>
 				 		<%= link_to m do %>
-	 						<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+	 						<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic",:style=>"margin-top:5%;")%>
 						<%end%>
 					<%else%>
 						<%= link_to m do %>
-  							<%=image_tag m.avatar.url(:thumb),class: "profilepic" %>
+  							<%=image_tag m.avatar.url(:thumb),class: "profilepic",:style=>"margin-top:5%;" %>
   						<%end%>
 					<%end%>
 				 	<%=link_to m.email,m%>
@@ -28,11 +28,11 @@
 			<td>
 				<%if (m.avatar_content_type==nil)%>
 					<%= link_to m do %>	
-	 					<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic")%>
+	 					<%=image_tag('user-button.jpg', size: "100x100",class: "profilepic",:style=>"margin-top:5%;")%>
 	 				<%end%>
 				<%else%>
   					<%= link_to m do %>
-  						<%=image_tag m.avatar.url(:thumb),class: "profilepic" %>
+  						<%=image_tag m.avatar.url(:thumb),class: "profilepic",:style=>"margin-top:5%;" %>
   					<%end%>
 				<%end%>
 				<%=link_to m.email,m%>
@@ -45,7 +45,7 @@
 </table>
 <div class="hvr-pulse">
 <ul class="pager">
-	   <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),events_path, class: 'animated slideInDown') %>
+	   <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),events_path, class: 'animated slideInDown','data-no-turbolink' => true) %>
 		</li><span aria-hidden="true"></span> </a></li>
 </ul>
 </div>

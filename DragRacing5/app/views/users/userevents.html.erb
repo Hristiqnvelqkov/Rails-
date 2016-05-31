@@ -1,12 +1,43 @@
-<%@userevents.each do |t|%>
-	<br>
-	<strong>Description: </strong>
-	<%=t.description%>
-	<br>
-	<strong>Title: </strong>
-	<%=t.title%>
-	<br>
-	<strong>Adress: </strong>
-	<%=t.adress%>
-	<br>
-<%end%>
+<%=render "events/navbar"%>
+<table style="margin-left: 5%;margin-top:5%;">
+ <tbody>
+ <tr>
+ <%i=0%>
+    <% @userevents.each do |event| %>
+      <%i+=1%>
+      <td>
+        <div class="row"  >
+        <%if i==1%>
+          <div class="col-sm-6 col-md-4" style=" margin-left: 5%;">
+          <%else%>
+            <div class="col-sm-6 col-md-4" style=" margin-left: 45%;">
+          <%end%>
+            <div class="thumbnail">
+              <%if event.avatar_file_name==nil%>
+                <%=image_tag("no-photo.png")%>
+              <%else%> 
+                <%=image_tag event.avatar(:medium)%>
+              <%end%>
+              <div class="caption">
+                <h2><%=event.title.scan(/.{10}|.+/).join("\n")%></h2>
+               <%=link_to "Learn More",{:controller => "events", :action => "show", :id => event.id }, class: 'btn btn-primary','data-no-turbolink' => true,:style=>'color:#FFFFFF;'%>
+              </div>
+            </div>
+          </div>
+          </div>
+          </td>
+          <%if i>=3%>
+              <%i=0%>
+              </tr>  
+              <tr>
+          <%else%>
+              <%next%>
+          <%end%>
+  <%end%>
+<br>
+</tbody>
+</table>
+<ul class="pager">
+	  <li class="previous"> <%= link_to(content_tag(:rel, "Back" , href:"animate.min.css"),@user, class: 'animated bounceInLeft') %>
+	</li><span aria-hidden="true"></span> </a></li>
+</ul>

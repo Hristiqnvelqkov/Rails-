@@ -34,6 +34,7 @@ Rails.application.routes.draw do
        match '/events/:id/classawd'=> 'results#classawd', via: :get
        match '/events/:id/enrollments'=> 'enrollments#index', via: :get
        match 'users/:id/mygallery' => 'users#mygallery', via: :get
+       match '/users/:user_id/usercars/:id' => "cars#usercarshow", via: :get 
 
       #match '/users/:id/usercars' => 'users#usercars' , via: :get
     # match '/events/:id/comments/show' => 'comments#show', via: :get

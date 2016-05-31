@@ -16,7 +16,7 @@
 <div class="panel panel-primary" style="width: 80%;">
   <div class="panel-heading" ><big><big><%=@event.title%></big></big></div>
   <div class="panel-body" >
- <%=@event.description.scan(/.{90}|.+/).join("\n")%>
+ <%=@event.description.scan(/.{80}|.+/).join("\n")%>
 <!-- <div class="enroll">
 <%= link_to(content_tag(:span, @event.enrollments.size , class:"badge")+"Enrollments",{:controller => "enrollments", :action => "index", :id => @event.id}, class: 'btn btn-primary')%> 
  </div> -->
